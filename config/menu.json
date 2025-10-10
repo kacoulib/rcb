@@ -1,71 +1,49 @@
 {
   "main": [
     {
-      "name": "Home",
+      "name": "Accueil",
       "url": "/"
     },
     {
-      "name": "Blog",
-      "url": "/blogs"
+      "name": "Le club",
+      "url": "/club"
     },
     {
-      "name": "Pricing",
-      "url": "/pricing"
+      "name": "Infos",
+      "url": "/infos"
+    },
+    {
+      "name": "Actualités",
+      "url": "/actu"
     },
     {
       "name": "Contact",
       "url": "/contact"
-    },
-    {
-      "name": "FAQ",
-      "url": "/faq"
     }
   ],
   "footer": [
     {
-      "name": "Company",
+      "name": "Navigation",
       "menu": [
         {
-          "text": "Pricing",
-          "url": "/pricing"
+          "text": "Accueil",
+          "url": "/"
         },
         {
-          "text": "Quick Start",
-          "url": "#"
-        }
-      ]
-    },
-    {
-      "name": "Product",
-      "menu": [
-        {
-          "text": "Features",
-          "url": "#"
+          "text": "Le club",
+          "url": "/club"
         },
         {
-          "text": "Platform",
-          "url": "#"
+          "text": "Infos",
+          "url": "/infos"
         },
         {
-          "text": "Pricing",
-          "url": "/pricing"
-        }
-      ]
-    },
-    {
-      "name": "Support",
-      "menu": [
-        {
-          "text": "FAQ",
-          "url": "/faq"
+          "text": "Actualités",
+          "url": "/actu"
         },
         {
-          "text": "Privacy Policy",
-          "url": "#"
-        },
-        {
-          "text": "Terms & Conditions",
-          "url": "#"
+          "text": "Contact",
+          "url": "/contact"
         }
       ]
     }

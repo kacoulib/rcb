@@ -89,6 +89,7 @@ const Header = () => {
                       className={`nav-link block ${
                         pathname === menu.url ? "nav-link-active" : ""
                       }`}
+                      aria-current={pathname === menu.url ? "page" : undefined}
                     >
                       {menu.name}
                     </Link>
