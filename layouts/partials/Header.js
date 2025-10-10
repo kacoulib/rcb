@@ -12,6 +12,7 @@ const Header = () => {
 
   // distructuring the main menu from menu object
   const { main } = menu;
+  const navigationItems = main.filter((item) => item.url !== "/actu");
 
   // states declaration
   const [navOpen, setNavOpen] = useState(false);
@@ -58,7 +59,7 @@ const Header = () => {
           }`}
         >
           <ul className="navbar-nav block w-full md:flex md:w-auto lg:space-x-2">
-            {main.map((menu, i) => (
+            {navigationItems.map((menu, i) => (
               <React.Fragment key={`menu-${i}`}>
                 {menu.hasChildren ? (
                   <li className="nav-item nav-dropdown group relative">
