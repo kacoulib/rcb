@@ -2,14 +2,16 @@
   "colors": {
     "default": {
       "theme_color": {
-        "primary": "#0aa8a7",
-        "body": "#fff",
-        "border": "#e9e9e9",
-        "theme_light": "#edf6f5"
+        "primary": "#D90429",
+        "secondary": "#EF233C",
+        "body": "#FFFFFF",
+        "border": "#F4DDE0",
+        "theme_light": "#FDE9EC"
       },
       "text_color": {
-        "default": "#777",
-        "dark": "#222"
+        "default": "#777777",
+        "light": "#F5F5F5",
+        "dark": "#111111"
       }
     }
   },

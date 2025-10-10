@@ -51,7 +51,10 @@ const Contact = ({ data }) => {
                   placeholder="Your message"
                 />
               </div>
-              <button type="submit" className="btn btn-primary">
+              <button
+                type="submit"
+                className="btn btn-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-dark"
+              >
                 Send Now
               </button>
             </form>

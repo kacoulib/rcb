@@ -25,7 +25,7 @@ const Posts = ({ posts }) => {
             <h2 className="h3 mb-2 mt-4">
               <Link
                 href={`/${blog_folder}/${posts[0].slug}`}
-                className="block hover:text-primary"
+                className="block hover:text-primary hover:underline underline-offset-2 focus-visible:text-primary focus-visible:underline focus-visible:outline-none"
               >
                 {posts[0].frontmatter.title}
               </Link>
@@ -37,7 +37,7 @@ const Posts = ({ posts }) => {
               )}
             </p>
             <Link
-              className="btn btn-primary mt-4"
+              className="btn btn-primary mt-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-dark"
               href={`/${blog_folder}/${posts[0].slug}`}
               rel=""
             >
@@ -60,14 +60,14 @@ const Posts = ({ posts }) => {
           <h2 className="h3 mb-2 mt-4">
             <Link
               href={`/${blog_folder}/${post.slug}`}
-              className="block hover:text-primary"
+              className="block hover:text-primary hover:underline underline-offset-2 focus-visible:text-primary focus-visible:underline focus-visible:outline-none"
             >
               {post.frontmatter.title}
             </Link>
           </h2>
           <p className="text-text">{post.frontmatter.desc}</p>
           <Link
-            className="btn btn-primary mt-4"
+            className="btn btn-primary mt-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-dark"
             href={`/${blog_folder}/${post.slug}`}
             rel=""
           >

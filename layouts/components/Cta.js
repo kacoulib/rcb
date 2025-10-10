@@ -21,7 +21,7 @@ function Cta({ cta }) {
             <p className="mt-6">{markdownify(cta?.content)}</p>
             {cta.button.enable && (
               <Link
-                className="btn btn-primary mt-4"
+                className="btn btn-primary mt-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-dark"
                 href={cta.button.link}
                 rel={cta.button.rel}
               >

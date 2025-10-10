@@ -1,5 +1,11 @@
 const theme = require("./config/theme.json");
 
+const palette = {
+  primary: "#D90429",
+  dark: "#111111",
+  white: "#FFFFFF",
+};
+
 let font_base = Number(theme.fonts.font_size.base.replace("px", ""));
 let font_scale = Number(theme.fonts.font_size.scale);
 let h6 = font_base / font_base;
@@ -43,14 +49,22 @@ module.exports = {
     },
     extend: {
       colors: {
-        text: theme.colors.default.text_color.default,
-        light: theme.colors.default.text_color.light,
-        dark: theme.colors.default.text_color.dark,
-        primary: theme.colors.default.theme_color.primary,
-        secondary: theme.colors.default.theme_color.secondary,
-        body: theme.colors.default.theme_color.body,
-        border: theme.colors.default.theme_color.border,
-        "theme-light": theme.colors.default.theme_color.theme_light,
+        text: theme.colors?.default?.text_color?.default ?? "#777777",
+        light:
+          theme.colors?.default?.text_color?.light ??
+          theme.colors?.default?.text_color?.default ??
+            "#9CA3AF",
+        dark: palette.dark,
+        primary: palette.primary,
+        secondary:
+          theme.colors?.default?.theme_color?.secondary ?? palette.dark,
+        body:
+          theme.colors?.default?.theme_color?.body ?? palette.white,
+        border:
+          theme.colors?.default?.theme_color?.border ?? "#E5E7EB",
+        "theme-light":
+          theme.colors?.default?.theme_color?.theme_light ?? "#FDE9EC",
+        white: palette.white,
       },
       fontSize: {
         base: font_base + "px",
