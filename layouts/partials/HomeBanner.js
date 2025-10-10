@@ -12,7 +12,7 @@ const HomeBanner = ({ banner }) => {
             <p className="mt-4">{markdownify(banner.content)}</p>
             {banner.button.enable && (
               <Link
-                className="btn btn-primary mt-4"
+                className="btn btn-primary mt-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-dark"
                 href={banner.button.link}
                 rel={banner.button.rel}
               >

@@ -100,7 +100,7 @@ const Header = () => {
             {enable && (
               <li className="md:hidden">
                 <Link
-                  className="btn btn-primary z-0 py-[14px]"
+                  className="btn btn-primary z-0 py-[14px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-dark"
                   href={link}
                   rel=""
                 >
@@ -112,7 +112,11 @@ const Header = () => {
         </div>
         {enable && (
           <div className="d-flex order-1 ml-auto hidden min-w-[200px] items-center justify-end md:order-2 md:ml-0 md:flex">
-            <Link className="btn btn-primary z-0 py-[14px]" href={link} rel="">
+            <Link
+              className="btn btn-primary z-0 py-[14px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-dark"
+              href={link}
+              rel=""
+            >
               {label}
             </Link>
           </div>

@@ -35,7 +35,7 @@ function Pricing({ data }) {
                     ))}
                   </ul>
                   <Link
-                    className={`btn mt-5 ${
+                    className={`btn mt-5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-dark ${
                       plan.recommended ? "btn-primary" : "btn-outline-primary"
                     }`}
                     href={plan.button.link}
