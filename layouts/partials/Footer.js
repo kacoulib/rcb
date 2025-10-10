@@ -9,12 +9,16 @@ import Link from "next/link";
 const Footer = () => {
   const { copyright, footer_content } = config.params;
   const { footer } = menu;
+  const footerColumns = footer.map((column) => ({
+    ...column,
+    menu: column.menu?.filter((item) => item.url !== "/actu") ?? [],
+  }));
   return (
     <footer className="section bg-theme-light pb-0">
       <div className="container">
         {/* footer menu */}
         <div className="row">
-          {footer.map((col) => {
+          {footerColumns.map((col) => {
             return (
               <div className="mb-12 sm:col-6 lg:col-3" key={col.name}>
                 {markdownify(col.name, "h2", "h4")}
