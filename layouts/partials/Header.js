@@ -74,7 +74,13 @@ const Header = () => {
     setNavOpen(false);
 
     if (url.startsWith("#")) {
-      scrollToElement(url);
+      // S'assurer que le header est visible avant de scroller
+      setIsHeaderVisible(true);
+
+      // Petit délai pour laisser le temps à l'animation de se terminer
+      setTimeout(() => {
+        scrollToElement(url);
+      }, 350); // Légèrement plus long que la durée de l'animation (300ms)
     }
   };
 
@@ -121,9 +127,12 @@ const Header = () => {
         {/* Menu */}
         <div
           id="nav-menu"
-          className={`order-3 md:order-1 absolute top-full left-0 right-0 bg-white shadow-lg md:relative md:shadow-none ${
-            navOpen ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"
-          } transition-all duration-300 overflow-hidden z-40`}
+          className={`order-3 md:order-1
+    absolute top-full left-0 right-0 bg-white shadow-lg
+    md:static md:bg-transparent md:shadow-none
+    ${navOpen ? "max-h-[70vh] opacity-100" : "max-h-0 opacity-0"}
+    md:max-h-none md:opacity-100 md:h-auto md:overflow-visible md:flex
+    transition-[max-height,opacity] duration-300 overflow-hidden z-40`}
         >
           <ul className="navbar-nav block w-full md:flex md:w-auto md:items-center lg:space-x-1">
             {main.map((menuItem, i) => (

@@ -99,7 +99,14 @@ const Hero = () => {
                 href="#planning"
                 onClick={(e) => {
                   e.preventDefault();
-                  scrollToElement("#planning");
+                  // S'assurer que le header est visible sur mobile
+                  const header = document.querySelector(".header");
+                  if (header && window.innerWidth <= 768) {
+                    header.style.transform = "translateY(0)";
+                  }
+                  setTimeout(() => {
+                    scrollToElement("#planning");
+                  }, 100);
                 }}
                 className="inline-flex items-center justify-center rounded-full border-2 border-white bg-transparent px-8 py-4 text-lg font-semibold text-white transition-all duration-300 hover:bg-white hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
               >
@@ -109,7 +116,14 @@ const Hero = () => {
                 href="#contact"
                 onClick={(e) => {
                   e.preventDefault();
-                  scrollToElement("#contact");
+                  // S'assurer que le header est visible sur mobile
+                  const header = document.querySelector(".header");
+                  if (header && window.innerWidth <= 768) {
+                    header.style.transform = "translateY(0)";
+                  }
+                  setTimeout(() => {
+                    scrollToElement("#contact");
+                  }, 100);
                 }}
                 className="inline-flex items-center justify-center rounded-full bg-primary px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:bg-primary/90 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
               >
