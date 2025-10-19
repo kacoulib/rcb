@@ -1,3 +1,5 @@
+"use client";
+
 import Social from "@components/Social";
 import config from "@config/config.json";
 import menu from "@config/menu.json";
@@ -11,8 +13,27 @@ const Footer = () => {
   const { footer } = menu;
   const footerColumns = footer.map((column) => ({
     ...column,
-    menu: column.menu?.filter((item) => item.url !== "/actu") ?? [],
+    menu: column.menu ?? [],
   }));
+
+  const handleScroll = (e, url) => {
+    e.preventDefault();
+
+    if (url.startsWith("#")) {
+      const element = document.querySelector(url);
+      if (element) {
+        const offset = 80;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+      }
+    }
+  };
+
   return (
     <footer className="section bg-theme-light pb-0">
       <div className="container">
@@ -25,9 +46,12 @@ const Footer = () => {
                 <ul className="mt-6">
                   {col?.menu.map((item) => (
                     <li className="mb-1" key={item.text}>
-                      <Link href={item.url} rel="">
+                      <a
+                        href={item.url}
+                        onClick={(e) => handleScroll(e, item.url)}
+                      >
                         {item.text}
-                      </Link>
+                      </a>
                     </li>
                   ))}
                 </ul>
@@ -36,14 +60,18 @@ const Footer = () => {
           })}
           {/* social icons */}
           <div className="md-12 sm:col-6 lg:col-3">
-            <Link href="/" aria-label="Bigspring">
+            <a
+              href="#accueil"
+              aria-label="Rahilou Cergy Boxe"
+              onClick={(e) => handleScroll(e, "#accueil")}
+            >
               <Image
                 src={config.site.logo}
                 width={config.site.logo_width}
                 height={config.site.logo_height}
                 alt=""
               />
-            </Link>
+            </a>
             {markdownify(footer_content, "p", "mt-3 mb-6")}
             <Social source={social} className="social-icons mb-8" />
           </div>

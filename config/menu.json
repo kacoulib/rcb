@@ -2,23 +2,23 @@
   "main": [
     {
       "name": "Accueil",
-      "url": "/"
+      "url": "#accueil"
+    },
+    {
+      "name": "Planning",
+      "url": "#planning"
+    },
+    {
+      "name": "Tarifs",
+      "url": "#tarifs"
     },
     {
       "name": "Le club",
-      "url": "/club"
-    },
-    {
-      "name": "Infos",
-      "url": "/infos"
-    },
-    {
-      "name": "Actualités",
-      "url": "/actu"
+      "url": "#club"
     },
     {
       "name": "Contact",
-      "url": "/contact"
+      "url": "#contact"
     }
   ],
   "footer": [
@@ -27,23 +27,23 @@
       "menu": [
         {
           "text": "Accueil",
-          "url": "/"
+          "url": "#accueil"
+        },
+        {
+          "text": "Planning",
+          "url": "#planning"
+        },
+        {
+          "text": "Tarifs",
+          "url": "#tarifs"
         },
         {
           "text": "Le club",
-          "url": "/club"
-        },
-        {
-          "text": "Infos",
-          "url": "/infos"
-        },
-        {
-          "text": "Actualités",
-          "url": "/actu"
+          "url": "#club"
         },
         {
           "text": "Contact",
-          "url": "/contact"
+          "url": "#contact"
         }
       ]
     }

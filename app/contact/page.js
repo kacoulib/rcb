@@ -16,7 +16,9 @@ const ContactPage = () => {
 
         <div className="space-y-12">
           <div className="space-y-8">
-            <h2 className="text-2xl font-semibold text-slate-900">Nous contacter</h2>
+            <h2 className="text-2xl font-semibold text-slate-900">
+              Nous contacter
+            </h2>
             <form
               method="post"
               action="#"
@@ -25,7 +27,10 @@ const ContactPage = () => {
               {/* TODO: brancher le handler plus tard. */}
               <div className="grid gap-6 md:grid-cols-2">
                 <div className="flex flex-col">
-                  <label htmlFor="name" className="mb-2 text-sm font-medium text-slate-700">
+                  <label
+                    htmlFor="name"
+                    className="mb-2 text-sm font-medium text-slate-700"
+                  >
                     Nom
                   </label>
                   <input
@@ -38,7 +43,10 @@ const ContactPage = () => {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label htmlFor="email" className="mb-2 text-sm font-medium text-slate-700">
+                  <label
+                    htmlFor="email"
+                    className="mb-2 text-sm font-medium text-slate-700"
+                  >
                     Email
                   </label>
                   <input
@@ -52,7 +60,10 @@ const ContactPage = () => {
                 </div>
               </div>
               <div className="flex flex-col">
-                <label htmlFor="message" className="mb-2 text-sm font-medium text-slate-700">
+                <label
+                  htmlFor="message"
+                  className="mb-2 text-sm font-medium text-slate-700"
+                >
                   Message
                 </label>
                 <textarea
@@ -76,12 +87,43 @@ const ContactPage = () => {
           </div>
 
           <div className="grid gap-12 lg:grid-cols-2">
-            <div className="space-y-6">
-              <h2 className="text-2xl font-semibold text-slate-900">Coordonnées</h2>
-              <div className="space-y-4 text-slate-700">
-                <p className="font-medium">Gymnase des Chênes — Cergy</p>
-                <p className="font-medium">Gymnase de la Butte — Éragny</p>
+            <div className="space-y-8">
+              <h2 className="text-2xl font-semibold text-slate-900">
+                Notre Gymnase
+              </h2>
+
+              {/* Gymnase des Chênes - Cergy */}
+              <div className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+                <h3 className="text-xl font-semibold text-slate-900 mb-4">
+                  Gymnase des Chênes — Cergy
+                </h3>
+                <div className="space-y-3 text-slate-700">
+                  <p>
+                    <strong>Adresse :</strong> Rue des Chênes Pourpres, 95000
+                    Cergy
+                  </p>
+                  <p>
+                    <strong>Surface :</strong> 300m²
+                  </p>
+                  <div>
+                    <p className="font-semibold mb-2">Équipements :</p>
+                    <ul className="list-disc list-inside space-y-1 text-sm">
+                      <li>2 Rings</li>
+                      <li>7 Sacs de frappe</li>
+                      <li>Tatami</li>
+                      <li>
+                        Accessoires pédagogiques : cerceaux, kettle bell, plot,
+                        haltères, medecin ball, cordes à sauter
+                      </li>
+                      <li>
+                        Appareils cardio musculaires Technogym : 2 Tapis, 2
+                        vélos
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               </div>
+
               <div className="space-y-2">
                 <p className="text-sm font-semibold uppercase tracking-wide text-slate-500">
                   Réseaux sociaux
@@ -108,28 +150,25 @@ const ContactPage = () => {
             </div>
 
             <div className="space-y-6">
-              <h2 className="text-2xl font-semibold text-slate-900">Nous trouver</h2>
-              <div className="grid gap-6 md:grid-cols-2">
-                <div className="overflow-hidden rounded-lg border border-slate-200">
-                  {/* TODO: remplacer les src des iframes par les URLs cartographiques réelles. */}
-                  <iframe
-                    title="Plan du Gymnase des Chênes à Cergy"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d0!2d0!3d0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMA!5e0!3m2!1sfr!2sfr!4v0000000000000"
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    className="h-64 w-full border-0"
-                    allowFullScreen
-                  />
-                </div>
-                <div className="overflow-hidden rounded-lg border border-slate-200">
-                  <iframe
-                    title="Plan du Gymnase de la Butte à Éragny"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d0!2d0!3d0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMA!5e0!3m2!1sfr!2sfr!4v0000000000000"
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    className="h-64 w-full border-0"
-                    allowFullScreen
-                  />
+              <h2 className="text-2xl font-semibold text-slate-900">
+                Nous trouver
+              </h2>
+              <div className="overflow-hidden rounded-lg border border-slate-200">
+                <iframe
+                  title="Plan du Gymnase des Chênes à Cergy"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.123456789!2d2.0371!3d49.0411!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e6f8c8c8c8c8c8%3A0x1234567890abcdef!2sRue%20des%20Ch%C3%AAnes%20Pourpres%2C%2095000%20Cergy!5e0!3m2!1sfr!2sfr!4v1640000000000"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="h-96 w-full border-0"
+                  allowFullScreen
+                />
+                <div className="p-4 bg-slate-50">
+                  <p className="text-sm font-medium text-slate-900">
+                    Gymnase des Chênes
+                  </p>
+                  <p className="text-xs text-slate-600">
+                    Rue des Chênes Pourpres, 95000 Cergy
+                  </p>
                 </div>
               </div>
             </div>

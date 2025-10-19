@@ -3,30 +3,46 @@
 import Logo from "@components/Logo";
 import menu from "@config/menu.json";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import React, { useState } from "react";
 import config from "../../config/config.json";
 
 const Header = () => {
-  const pathname = usePathname();
-
   // distructuring the main menu from menu object
   const { main } = menu;
-  const navigationItems = main.filter((item) => item.url !== "/actu");
 
   // states declaration
   const [navOpen, setNavOpen] = useState(false);
 
   // logo source
   const { logo } = config.site;
-  const { enable, label, link } = config.nav_button;
+
+  const handleScroll = (e, url) => {
+    e.preventDefault();
+    setNavOpen(false);
+
+    if (url.startsWith("#")) {
+      const element = document.querySelector(url);
+      if (element) {
+        const offset = 80; // Décalage pour le header fixe
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+      }
+    }
+  };
 
   return (
-    <header className="header">
+    <header className="header sticky top-0 z-50 bg-white shadow-sm">
       <nav className="navbar container">
         {/* logo */}
         <div className="order-0">
-          <Logo src={logo} />
+          <Link href="#accueil" onClick={(e) => handleScroll(e, "#accueil")}>
+            <Logo src={logo} />
+          </Link>
         </div>
 
         {/* navbar toggler */}
@@ -59,69 +75,19 @@ const Header = () => {
           }`}
         >
           <ul className="navbar-nav block w-full md:flex md:w-auto lg:space-x-2">
-            {navigationItems.map((menu, i) => (
-              <React.Fragment key={`menu-${i}`}>
-                {menu.hasChildren ? (
-                  <li className="nav-item nav-dropdown group relative">
-                    <span className="nav-link inline-flex items-center">
-                      {menu.name}
-                      <svg className="h-4 w-4 fill-current" viewBox="0 0 20 20">
-                        <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                      </svg>
-                    </span>
-                    <ul className="nav-dropdown-list hidden group-hover:block md:invisible md:absolute md:block md:opacity-0 md:group-hover:visible md:group-hover:opacity-100">
-                      {menu.children.map((child, i) => (
-                        <li className="nav-dropdown-item" key={`children-${i}`}>
-                          <Link
-                            href={child.url}
-                            className="nav-dropdown-link block"
-                          >
-                            {child.name}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </li>
-                ) : (
-                  <li className="nav-item">
-                    <Link
-                      href={menu.url}
-                      onClick={() => setNavOpen(false)}
-                      className={`nav-link block ${
-                        pathname === menu.url ? "nav-link-active" : ""
-                      }`}
-                      aria-current={pathname === menu.url ? "page" : undefined}
-                    >
-                      {menu.name}
-                    </Link>
-                  </li>
-                )}
-              </React.Fragment>
-            ))}
-            {enable && (
-              <li className="md:hidden">
-                <Link
-                  className="btn btn-primary z-0 py-[14px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-dark"
-                  href={link}
-                  rel=""
+            {main.map((menuItem, i) => (
+              <li className="nav-item" key={`menu-${i}`}>
+                <a
+                  href={menuItem.url}
+                  onClick={(e) => handleScroll(e, menuItem.url)}
+                  className="nav-link block"
                 >
-                  {label}
-                </Link>
+                  {menuItem.name}
+                </a>
               </li>
-            )}
+            ))}
           </ul>
         </div>
-        {enable && (
-          <div className="d-flex order-1 ml-auto hidden min-w-[200px] items-center justify-end md:order-2 md:ml-0 md:flex">
-            <Link
-              className="btn btn-primary z-0 py-[14px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-dark"
-              href={link}
-              rel=""
-            >
-              {label}
-            </Link>
-          </div>
-        )}
       </nav>
     </header>
   );

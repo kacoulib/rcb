@@ -1,12 +1,12 @@
 {
   "site": {
-    "title": "Bigspring Light Nextjs",
+    "title": "RCB95 - Rahilou Cergy Boxe",
     "base_url": "/",
     "favicon": "/images/favicon.png",
     "logo": "/images/logo.png",
     "logo_width": "200",
-    "logo_height": "48",
-    "logo_text": "Bigspring Light"
+    "logo_height": "60",
+    "logo_text": "RCB95"
   },
 
   "settings": {
@@ -16,21 +16,21 @@
   },
 
   "nav_button": {
-    "enable": true,
-    "label": "Get Started",
+    "enable": false,
+    "label": "S'inscrire",
     "link": "/contact"
   },
 
   "params": {
     "contact_form_action": "",
     "tag_manager_id": "",
-    "footer_content": "Lorem ipsum dolor sit amet, consectetur elit. Consjat tristique eget amet, tempus eu at cttur.",
-    "copyright": "Designed and Developed By [Themefisher](https://themefisher.com/)"
+    "footer_content": "Le noble art prend tous son sens pour tous les niveaux au RAHILOU CERGY BOXE",
+    "copyright": "© 2024 RCB95 - Rahilou Cergy Boxe. Tous droits réservés."
   },
 
   "metadata": {
-    "meta_author": "Themefisher",
+    "meta_author": "RCB95",
     "meta_image": "",
-    "meta_description": "A SAAS template for nextjs"
+    "meta_description": "RCB95 - Rahilou Cergy Boxe. Club de boxe anglaise à Cergy. Boxe éducative, loisir et compétition pour tous niveaux."
   }
 }

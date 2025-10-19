@@ -8,30 +8,30 @@ Site informatif Next.js (préproduction Vercel)
 
 **RCB** est un site vitrine informatif pour l’association **Rahilou Cergy Boxe**. Il s’appuie sur un template **Next.js + Tailwind CSS** (fork de Bigspring) pour permettre un **déploiement rapide** et des **modifications simples**.
 
-* **Objectif** : présenter le club, ses valeurs, publier des actualités, afficher **planning & tarifs**, et faciliter le **contact**.
-* **Hébergement** : **Vercel** (environnement de préproduction).
-* **Langue** : Français (le template d’origine peut être en anglais).
-* **Licence** : MIT (du template d’origine + contenu RCB).
+- **Objectif** : présenter le club, ses valeurs, publier des actualités, afficher **planning & tarifs**, et faciliter le **contact**.
+- **Hébergement** : **Vercel** (environnement de préproduction).
+- **Langue** : Français (le template d’origine peut être en anglais).
+- **Licence** : MIT (du template d’origine + contenu RCB).
 
 ---
 
 ## 🧱 Stack & Prérequis
 
-* **Next.js** (App Router recommandé)
-* **React 18+**
-* **Tailwind CSS**
-* **Node.js 18+** (ou 20+)
-* Gestionnaire de packages au choix : **npm**, **pnpm** ou **yarn**
+- **Next.js** (App Router recommandé)
+- **React 18+**
+- **Tailwind CSS**
+- **Node.js 18+** (ou 20+)
+- Gestionnaire de packages au choix : **npm**, **pnpm** ou **yarn**
 
 ---
 
 ## 🗺️ Plan du site (≤ 5 pages)
 
-* `/` **Accueil** — Hero, 3 cartes (Découverte/Entraînement/Compétition), bandeau **Nos lieux** (Cergy/Éragny), **Dernières actualités**
-* `/club` **Le club** — Présentation, valeurs, encadrement (entraîneurs), mini‑galerie
-* `/infos` **Planning & Tarifs** — 2 tableaux clairs et responsives
-* `/actu` **Actualités** — Liste d’articles + pages détail
-* `/contact` **Contact** — Formulaire (placeholder), adresses, réseaux, Google Maps
+- `/` **Accueil** — Hero, 3 cartes (Découverte/Entraînement/Compétition), bandeau **Nos lieux** (Cergy/Éragny), **Dernières actualités**
+- `/club` **Le club** — Présentation, valeurs, encadrement (entraîneurs), mini‑galerie
+- `/infos` **Planning & Tarifs** — 2 tableaux clairs et responsives
+- `/actu` **Actualités** — Liste d’articles + pages détail
+- `/contact` **Contact** — Formulaire (placeholder), adresses, réseaux, Google Maps
 
 > ℹ️ Les pages supplémentaires (FAQ, Légales, Tarifs détaillés, etc.) peuvent exister dans le template mais **ne sont pas exposées** dans la navigation pour rester sous 5 pages.
 
@@ -66,20 +66,20 @@ npm run dev
 
 Palette recommandée :
 
-* **primary** : `#D90429` (rouge RCB)
-* **dark** : `#111111` (noir profond)
-* **white** : `#FFFFFF`
+- **primary** : `#D90429` (rouge RCB)
+- **dark** : `#111111` (noir profond)
+- **white** : `#FFFFFF`
 
 👉 Déclarer ces couleurs dans `tailwind.config.{js,ts}` (`theme.extend.colors`). Appliquer **`primary`** aux CTA, liens principaux et accents.
 
 ### Logo & favicon
 
-* Placer les assets dans `public/` (ex. `public/rcb-logo.png`, `public/favicon.ico`).
-* Mettre à jour l’import du logo dans le header/footer et les meta Open Graph.
+- Placer les assets dans `public/` (ex. `public/rcb-logo.jpg`, `public/favicon.ico`).
+- Mettre à jour l’import du logo dans le header/footer et les meta Open Graph.
 
 ### Typo & espacements
 
-* Conserver les classes Tailwind existantes ; ajuster au besoin (`font-semibold`, `tracking-wide`, `leading-relaxed`, etc.).
+- Conserver les classes Tailwind existantes ; ajuster au besoin (`font-semibold`, `tracking-wide`, `leading-relaxed`, etc.).
 
 ---
 
@@ -103,46 +103,45 @@ Le footer reprend les mêmes liens + mentions nécessaires.
 
 ### Accueil (`/`)
 
-* **Hero** : titre, sous‑titre, boutons → FR.
-* **3 cartes** : Découverte / Entraînement / Compétition → 2‑3 phrases chacune.
-* **Nos lieux** : Cergy, Éragny → adresses courtes / pictos localisation.
-* **Dernières actualités** : afficher les 3 posts récents.
+- **Hero** : titre, sous‑titre, boutons → FR.
+- **3 cartes** : Découverte / Entraînement / Compétition → 2‑3 phrases chacune.
+- **Nos lieux** : Cergy, Éragny → adresses courtes / pictos localisation.
+- **Dernières actualités** : afficher les 3 posts récents.
 
 ### Le club (`/club`)
 
-* Paragraphe de présentation (≈150–200 mots).
-* Encadrement (coach principal / assistants) avec photos placeholders.
-* Galerie (3–6 images) avec `alt` FR.
+- Paragraphe de présentation (≈150–200 mots).
+- Encadrement (coach principal / assistants) avec photos placeholders.
+- Galerie (3–6 images) avec `alt` FR.
 
 ### Infos (`/infos`)
 
-* **Planning** (tableau) colonnes : Jour | Heure | Public | Lieu.
-* **Tarifs** (tableau) colonnes : Licence | Catégorie | Prix.
+- **Planning** (tableau) colonnes : Jour | Heure | Public | Lieu.
+- **Tarifs** (tableau) colonnes : Licence | Catégorie | Prix.
 
 ### Actualités (`/actu`)
 
-* Renommer **Blog** → **Actualités**.
-* Créer 2–3 posts exemple (FR) :
-
+- Renommer **Blog** → **Actualités**.
+- Créer 2–3 posts exemple (FR) :
   1. Rentrée sportive : séances d’essai gratuites cette semaine
   2. Gala RCB – merci aux bénévoles et aux partenaires !
   3. Nouveaux créneaux handi‑boxe : infos et inscriptions
 
 ### Contact (`/contact`)
 
-* Formulaire placeholder (Nom, Email, Message) → action à brancher plus tard.
-* Adresses : **Gymnase des Chênes (Cergy)**, **Gymnase de la Butte (Éragny)**.
-* Réseaux : Instagram, Facebook → liens à insérer.
-* Google Maps : 2 iframes (remplacer `src`).
+- Formulaire placeholder (Nom, Email, Message) → action à brancher plus tard.
+- Adresses : **Gymnase des Chênes (Cergy)**, **Gymnase de la Butte (Éragny)**.
+- Réseaux : Instagram, Facebook → liens à insérer.
+- Google Maps : 2 iframes (remplacer `src`).
 
 ---
 
 ## 🔎 SEO de base
 
-* **Title par défaut** : `Rahilou Cergy Boxe – RCB`
-* **Meta description** (FR, ~150–160 car.)
-* **Open Graph / Twitter Cards** : titre, description, image OG (`/public/og.jpg`)
-* **Sitemap** (`/sitemap.xml`) et **robots.txt**
+- **Title par défaut** : `Rahilou Cergy Boxe – RCB`
+- **Meta description** (FR, ~150–160 car.)
+- **Open Graph / Twitter Cards** : titre, description, image OG (`/public/og.jpg`)
+- **Sitemap** (`/sitemap.xml`) et **robots.txt**
 
 > Vérifier que chaque page a un **H1 unique**, et que les images ont des **attributs alt** descriptifs.
 
@@ -150,10 +149,10 @@ Le footer reprend les mêmes liens + mentions nécessaires.
 
 ## 🧪 Qualité & accessibilité
 
-* **Contrastes** suffisants (CTA sur fond sombre, texte lisible en mode sombre).
-* **Navigation clavier** OK, focus visible.
-* **ARIA** sur icônes / boutons sans texte.
-* **Lighthouse** : viser de bons scores Perf/SEO/A11y/Best‑Practices.
+- **Contrastes** suffisants (CTA sur fond sombre, texte lisible en mode sombre).
+- **Navigation clavier** OK, focus visible.
+- **ARIA** sur icônes / boutons sans texte.
+- **Lighthouse** : viser de bons scores Perf/SEO/A11y/Best‑Practices.
 
 ---
 
@@ -187,16 +186,16 @@ Le footer reprend les mêmes liens + mentions nécessaires.
 
 ## 🤝 Contribution & conventions
 
-* **Commits** : Conventional Commits recommandé (`feat:`, `fix:`, `docs:`, `style:`, `refactor:`, `chore:`).
-* **Branches** : `feat/…`, `fix/…`, `docs/…`, etc.
-* **PRs** : petites et ciblées (une feature par PR).
+- **Commits** : Conventional Commits recommandé (`feat:`, `fix:`, `docs:`, `style:`, `refactor:`, `chore:`).
+- **Branches** : `feat/…`, `fix/…`, `docs/…`, etc.
+- **PRs** : petites et ciblées (une feature par PR).
 
 ---
 
 ## 👥 Auteurs / Contact
 
-* Équipe RCB — Communication / Web
-* Email générique : `contact@rcb95000.com` (placeholder)
+- Équipe RCB — Communication / Web
+- Email générique : `contact@rcb95000.com` (placeholder)
 
 ---
 
@@ -212,9 +211,9 @@ Ce projet reprend un template open‑source sous **MIT**. Le contenu spécifique
 
 ## 🎯 Objectifs
 
-* Site informatif **≤ 5 pages** (Accueil, Le club, Infos, Actualités, Contact).
-* **FR intégral** (UI + contenus), **thème RCB** (rouge/noir/blanc), **Vercel‑ready**.
-* Code propre, a11y/SEO soignés, commits atomiques et lisibles.
+- Site informatif **≤ 5 pages** (Accueil, Le club, Infos, Actualités, Contact).
+- **FR intégral** (UI + contenus), **thème RCB** (rouge/noir/blanc), **Vercel‑ready**.
+- Code propre, a11y/SEO soignés, commits atomiques et lisibles.
 
 ## 🧭 Règles d’or (IMPORTANT)
 
@@ -241,47 +240,46 @@ Ce projet reprend un template open‑source sous **MIT**. Le contenu spécifique
 
 ## 🧾 Spécifications de sortie attendue
 
-* **Chemins exacts** pour chaque fichier modifié/ajouté.
-* **Diffs** formatés (ou fichiers complets si plus lisibles).
-* **Messages de commit** (Conventional Commits) proposés à chaque étape, par ex. :
-
-  * `feat(nav): navigation FR + pages de base`
-  * `style(theme): palette RCB + CTA`
-  * `feat(home): hero + sections + dernières actu`
-  * `feat(infos): tableaux planning & tarifs`
-  * `feat(actu): blog → actualités + 3 posts FR`
-  * `feat(contact): formulaire + adresses + maps`
-  * `docs(readme): instructions Vercel + guide contenu`
-  * `refactor: cleanup nav + a11y fixes`
+- **Chemins exacts** pour chaque fichier modifié/ajouté.
+- **Diffs** formatés (ou fichiers complets si plus lisibles).
+- **Messages de commit** (Conventional Commits) proposés à chaque étape, par ex. :
+  - `feat(nav): navigation FR + pages de base`
+  - `style(theme): palette RCB + CTA`
+  - `feat(home): hero + sections + dernières actu`
+  - `feat(infos): tableaux planning & tarifs`
+  - `feat(actu): blog → actualités + 3 posts FR`
+  - `feat(contact): formulaire + adresses + maps`
+  - `docs(readme): instructions Vercel + guide contenu`
+  - `refactor: cleanup nav + a11y fixes`
 
 ## 🧑‍💻 Lignes directrices de code
 
-* **Tailwind** : privilégier classes utilitaires, éviter CSS custom si possible.
-* **Accessibilité** : `alt` descriptifs, `aria-label` pour icônes, rôle explicite si besoin, focus visible.
-* **SEO** : un **H1** par page, titres hiérarchisés, metas complètes, liens descriptifs.
-* **Performances** : `next/image` pour les images, éviter images lourdes, charger paresseux si nécessaire.
-* **i18n minimal** : contenu FR en dur pour l’instant; pas d’infrastructure i18n requise.
+- **Tailwind** : privilégier classes utilitaires, éviter CSS custom si possible.
+- **Accessibilité** : `alt` descriptifs, `aria-label` pour icônes, rôle explicite si besoin, focus visible.
+- **SEO** : un **H1** par page, titres hiérarchisés, metas complètes, liens descriptifs.
+- **Performances** : `next/image` pour les images, éviter images lourdes, charger paresseux si nécessaire.
+- **i18n minimal** : contenu FR en dur pour l’instant; pas d’infrastructure i18n requise.
 
 ## 🧩 Spécifs de pages (rappel)
 
-* **Accueil** : Hero (titre/sous‑titre/2 CTA), 3 cartes, “Nos lieux” (Cergy/Éragny), bloc “Dernières actualités (3)”.
-* **Le club** : texte 150–200 mots, encadrement (cartes membres), 3–6 images.
-* **Infos** : 2 tableaux responsives.
-* **Actualités** : liste + détail; slugs FR OK.
-* **Contact** : form placeholder, adresses, réseaux, 2 maps (iframes).
+- **Accueil** : Hero (titre/sous‑titre/2 CTA), 3 cartes, “Nos lieux” (Cergy/Éragny), bloc “Dernières actualités (3)”.
+- **Le club** : texte 150–200 mots, encadrement (cartes membres), 3–6 images.
+- **Infos** : 2 tableaux responsives.
+- **Actualités** : liste + détail; slugs FR OK.
+- **Contact** : form placeholder, adresses, réseaux, 2 maps (iframes).
 
 ## ✅ Critères d’acceptation (checklist finale)
 
-* [ ] Nav FR (ordre exact) + footer OK
-* [ ] Thème **primary=#D90429**, sombre lisible
-* [ ] Accueil complet avec 3 posts d’actu visibles
-* [ ] Le club : texte FR, encadrement, galerie
-* [ ] Infos : tableaux lisibles, responsive
-* [ ] Actualités : index + détails, 3 posts exemples
-* [ ] Contact : formulaire, adresses, réseaux, 2 iframes
-* [ ] SEO : title, description, OG, favicon/logo
-* [ ] A11y : alt/labels/contrastes/focus
-* [ ] Build Next.js passe, déploiement Vercel prêt
+- [ ] Nav FR (ordre exact) + footer OK
+- [ ] Thème **primary=#D90429**, sombre lisible
+- [ ] Accueil complet avec 3 posts d’actu visibles
+- [ ] Le club : texte FR, encadrement, galerie
+- [ ] Infos : tableaux lisibles, responsive
+- [ ] Actualités : index + détails, 3 posts exemples
+- [ ] Contact : formulaire, adresses, réseaux, 2 iframes
+- [ ] SEO : title, description, OG, favicon/logo
+- [ ] A11y : alt/labels/contrastes/focus
+- [ ] Build Next.js passe, déploiement Vercel prêt
 
 ---
 
