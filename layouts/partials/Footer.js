@@ -26,27 +26,27 @@ const Footer = () => {
 
   return (
     <footer className="bg-slate-900 text-white">
-      <div className="container mx-auto px-4 py-16">
+      <div className="container mx-auto px-4 py-12 md:py-16">
         {/* Contenu principal */}
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 text-center">
           {/* Logo et description */}
-          <div className="lg:col-span-2">
+          <div className="flex flex-col items-center">
             <div className="mb-6">
               <Image
                 src={config.site.logo}
                 width={200}
                 height={60}
                 alt="RCB95 - Rahilou Cergy Boxe"
-                className="h-16 w-auto"
+                className="h-16 w-auto mx-auto"
               />
             </div>
-            <p className="mb-6 text-sm text-slate-300 leading-relaxed">
+            <p className="mb-6 text-sm text-slate-200 leading-relaxed md:text-base max-w-md">
               Boxe pour tous à Cergy :<br />
               initiation, loisir, compétition.
             </p>
 
             {/* Icônes sociales */}
-            <div className="flex space-x-4">
+            <div className="flex space-x-4 justify-center">
               {social.facebook && (
                 <a
                   href={social.facebook}
@@ -106,15 +106,17 @@ const Footer = () => {
           </div>
 
           {/* Navigation */}
-          <div>
-            <h3 className="mb-6 text-lg font-semibold">Navigation</h3>
-            <ul className="space-y-3">
+          <div className="flex flex-col items-center">
+            <h3 className="mb-4 text-base font-bold text-white md:mb-6 md:text-lg">
+              Navigation
+            </h3>
+            <ul className="space-y-2 md:space-y-3 text-center">
               {footerColumns[0]?.menu.map((item) => (
                 <li key={item.text}>
                   <a
                     href={item.url}
                     onClick={(e) => handleScroll(e, item.url)}
-                    className="text-slate-300 transition hover:text-white hover:underline"
+                    className="text-sm text-slate-200 transition hover:text-white hover:underline md:text-base"
                   >
                     {item.text}
                   </a>
@@ -124,19 +126,25 @@ const Footer = () => {
           </div>
 
           {/* Contact rapide */}
-          <div>
-            <h3 className="mb-6 text-lg font-semibold">Contact</h3>
-            <div className="space-y-3 text-slate-300">
+          <div className="flex flex-col items-center">
+            <h3 className="mb-4 text-base font-bold text-white md:mb-6 md:text-lg">
+              Contact
+            </h3>
+            <div className="space-y-2 text-slate-200 md:space-y-3 text-center">
               <div>
-                <p className="font-medium text-white">Gymnase des Chênes</p>
-                <p>Rue des Chênes Pourpres</p>
-                <p>95000 Cergy</p>
+                <p className="text-sm font-medium text-white md:text-base">
+                  Gymnase des Chênes
+                </p>
+                <p className="text-sm md:text-base">Rue des Chênes Pourpres</p>
+                <p className="text-sm md:text-base">95000 Cergy</p>
               </div>
               <div>
-                <p className="font-medium text-white">Horaires</p>
-                <p>Lun-Ven: 10h-22h</p>
-                <p>Sam: 10h-15h</p>
-                <p>Dim: 11h-13h</p>
+                <p className="text-sm font-medium text-white md:text-base">
+                  Horaires
+                </p>
+                <p className="text-sm md:text-base">Lun-Ven: 10h-22h</p>
+                <p className="text-sm md:text-base">Sam: 10h-15h</p>
+                <p className="text-sm md:text-base">Dim: 11h-13h</p>
               </div>
             </div>
           </div>
