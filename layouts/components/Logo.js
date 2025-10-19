@@ -17,7 +17,7 @@ const Logo = ({ src }) => {
     <Link
       href="/"
       onClick={handleLogoClick}
-      className="navbar-brand block py-1"
+      className="navbar-brand py-1 flex items-center"
       style={{
         height: logo_height.replace("px", "") + "px",
         width: logo_width.replace("px", "") + "px",
@@ -30,6 +30,7 @@ const Logo = ({ src }) => {
           src={src ? src : logo}
           alt={title}
           priority
+          className="object-contain w-full h-full"
         />
       ) : logo_text ? (
         logo_text

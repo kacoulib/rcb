@@ -3,7 +3,7 @@
 import Logo from "@components/Logo";
 import menu from "@config/menu.json";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import config from "../../config/config.json";
 import { scrollToElement } from "@lib/utils/scrollToElement";
 
@@ -13,11 +13,63 @@ const Header = () => {
 
   // states declaration
   const [navOpen, setNavOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
 
   // logo source
   const { logo } = config.site;
 
-  const handleScroll = (e, url) => {
+  // Effect pour gérer le scroll du header
+  useEffect(() => {
+    let ticking = false;
+
+    const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+
+          // Détecter si on a scrollé
+          if (currentScrollY > 100) {
+            setIsScrolled(true);
+          } else {
+            setIsScrolled(false);
+          }
+
+          // Gérer la visibilité du header sur mobile uniquement
+          if (window.innerWidth <= 768) {
+            const scrollDifference = Math.abs(currentScrollY - lastScrollY);
+
+            // Seuil minimum de scroll pour déclencher l'animation
+            if (scrollDifference > 5) {
+              if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                // Scroll vers le bas - cacher le header
+                setIsHeaderVisible(false);
+              } else if (currentScrollY < lastScrollY) {
+                // Scroll vers le haut - montrer le header
+                setIsHeaderVisible(true);
+              }
+            }
+          } else {
+            // Sur desktop, toujours visible
+            setIsHeaderVisible(true);
+          }
+
+          setLastScrollY(currentScrollY);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [lastScrollY]);
+
+  const handleMenuClick = (e, url) => {
     e.preventDefault();
     setNavOpen(false);
 
@@ -27,8 +79,12 @@ const Header = () => {
   };
 
   return (
-    <header className="header sticky top-0 z-50 bg-white shadow-md">
-      <nav className="navbar container flex items-center justify-between py-4">
+    <header
+      className={`header sticky top-0 z-50 bg-white shadow-md transition-transform duration-300 ease-in-out ${
+        isHeaderVisible ? "translate-y-0" : "-translate-y-full"
+      } ${isScrolled ? "shadow-lg" : "shadow-md"}`}
+    >
+      <nav className="navbar container flex items-center justify-between py-2 md:py-4">
         {/* logo */}
         <div className="order-0">
           <Logo src={logo} />
@@ -38,7 +94,13 @@ const Header = () => {
         <button
           id="show-button"
           className="order-2 flex cursor-pointer items-center md:hidden"
-          onClick={() => setNavOpen(!navOpen)}
+          onClick={() => {
+            setNavOpen(!navOpen);
+            // S'assurer que le header est visible quand on ouvre le menu
+            if (!navOpen) {
+              setIsHeaderVisible(true);
+            }
+          }}
         >
           {navOpen ? (
             <svg className="h-6 fill-current" viewBox="0 0 20 20">
@@ -68,10 +130,7 @@ const Header = () => {
               <li className="nav-item" key={`menu-${i}`}>
                 <a
                   href={menuItem.url}
-                  onClick={(e) => {
-                    handleScroll(e, menuItem.url);
-                    setNavOpen(false);
-                  }}
+                  onClick={(e) => handleMenuClick(e, menuItem.url)}
                   className="nav-link block px-4 py-3 transition hover:text-primary hover:bg-gray-50 md:hover:bg-transparent"
                 >
                   {menuItem.name}

@@ -56,7 +56,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative h-[calc(100vh-100px)] overflow-hidden">
+    <section className="relative h-[calc(100vh-100px)] overflow-hidden pt-20 md:pt-24">
       {/* Carousel Background */}
       <div className="absolute inset-0">
         {carouselImages.map((image, index) => (
@@ -139,11 +139,11 @@ const Hero = () => {
       {/* Boutons de navigation */}
       <button
         onClick={goToPrevious}
-        className="absolute left-4 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/20 p-3 text-white transition-all duration-300 hover:bg-white/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+        className="absolute left-2 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/20 p-2 sm:p-3 text-white transition-all duration-300 hover:bg-white/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white touch-manipulation"
         aria-label="Image précédente"
       >
         <svg
-          className="h-6 w-6"
+          className="h-5 w-5 sm:h-6 sm:w-6"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -159,11 +159,11 @@ const Hero = () => {
 
       <button
         onClick={goToNext}
-        className="absolute right-4 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/20 p-3 text-white transition-all duration-300 hover:bg-white/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+        className="absolute right-2 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/20 p-2 sm:p-3 text-white transition-all duration-300 hover:bg-white/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white touch-manipulation"
         aria-label="Image suivante"
       >
         <svg
-          className="h-6 w-6"
+          className="h-5 w-5 sm:h-6 sm:w-6"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"

@@ -1,5 +1,6 @@
 .header {
-  @apply bg-white py-[14px] px-4 md:px-0 md:py-[9px];
+  @apply bg-white py-2 px-4 md:px-0 md:py-4;
+  min-height: 80px;
 }
 
 // navbar items
