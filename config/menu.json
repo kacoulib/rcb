@@ -1,10 +1,6 @@
 {
   "main": [
     {
-      "name": "Accueil",
-      "url": "#accueil"
-    },
-    {
       "name": "Planning",
       "url": "#planning"
     },
@@ -25,10 +21,6 @@
     {
       "name": "Navigation",
       "menu": [
-        {
-          "text": "Accueil",
-          "url": "#accueil"
-        },
         {
           "text": "Planning",
           "url": "#planning"

@@ -5,6 +5,7 @@ import menu from "@config/menu.json";
 import Link from "next/link";
 import React, { useState } from "react";
 import config from "../../config/config.json";
+import { scrollToElement } from "@lib/utils/scrollToElement";
 
 const Header = () => {
   // distructuring the main menu from menu object
@@ -21,34 +22,22 @@ const Header = () => {
     setNavOpen(false);
 
     if (url.startsWith("#")) {
-      const element = document.querySelector(url);
-      if (element) {
-        const offset = 80; // Décalage pour le header fixe
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: "smooth",
-        });
-      }
+      scrollToElement(url);
     }
   };
 
   return (
-    <header className="header sticky top-0 z-50 bg-white shadow-sm">
-      <nav className="navbar container">
+    <header className="header sticky top-0 z-50 bg-white shadow-md">
+      <nav className="navbar container flex items-center justify-between py-4">
         {/* logo */}
         <div className="order-0">
-          <Link href="#accueil" onClick={(e) => handleScroll(e, "#accueil")}>
-            <Logo src={logo} />
-          </Link>
+          <Logo src={logo} />
         </div>
 
         {/* navbar toggler */}
         <button
           id="show-button"
-          className="order-2 flex cursor-pointer items-center md:order-1 md:hidden"
+          className="order-2 flex cursor-pointer items-center md:hidden"
           onClick={() => setNavOpen(!navOpen)}
         >
           {navOpen ? (
@@ -74,13 +63,13 @@ const Header = () => {
             navOpen ? "max-h-[1000px]" : "max-h-0"
           }`}
         >
-          <ul className="navbar-nav block w-full md:flex md:w-auto lg:space-x-2">
+          <ul className="navbar-nav block w-full md:flex md:w-auto md:items-center lg:space-x-1">
             {main.map((menuItem, i) => (
               <li className="nav-item" key={`menu-${i}`}>
                 <a
                   href={menuItem.url}
                   onClick={(e) => handleScroll(e, menuItem.url)}
-                  className="nav-link block"
+                  className="nav-link block px-3 py-2 transition hover:text-primary"
                 >
                   {menuItem.name}
                 </a>

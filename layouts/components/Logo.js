@@ -7,9 +7,18 @@ const Logo = ({ src }) => {
   const { base_url, logo, logo_width, logo_height, logo_text, title } =
     config.site;
 
+  const handleLogoClick = (e) => {
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <Link
-      href={base_url}
+      href="#accueil"
+      onClick={handleLogoClick}
       className="navbar-brand block py-1"
       style={{
         height: logo_height.replace("px", "") + "px",
