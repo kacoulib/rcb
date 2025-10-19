@@ -59,17 +59,20 @@ const Header = () => {
         {/* Menu */}
         <div
           id="nav-menu"
-          className={`order-3 md:order-1 ${
-            navOpen ? "max-h-[1000px]" : "max-h-0"
-          }`}
+          className={`order-3 md:order-1 absolute top-full left-0 right-0 bg-white shadow-lg md:relative md:shadow-none ${
+            navOpen ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"
+          } transition-all duration-300 overflow-hidden z-40`}
         >
           <ul className="navbar-nav block w-full md:flex md:w-auto md:items-center lg:space-x-1">
             {main.map((menuItem, i) => (
               <li className="nav-item" key={`menu-${i}`}>
                 <a
                   href={menuItem.url}
-                  onClick={(e) => handleScroll(e, menuItem.url)}
-                  className="nav-link block px-3 py-2 transition hover:text-primary"
+                  onClick={(e) => {
+                    handleScroll(e, menuItem.url);
+                    setNavOpen(false);
+                  }}
+                  className="nav-link block px-4 py-3 transition hover:text-primary hover:bg-gray-50 md:hover:bg-transparent"
                 >
                   {menuItem.name}
                 </a>

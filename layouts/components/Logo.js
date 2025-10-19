@@ -9,15 +9,13 @@ const Logo = ({ src }) => {
 
   const handleLogoClick = (e) => {
     e.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    // Aller à la page d'accueil et scroll vers le haut
+    window.location.href = "/";
   };
 
   return (
     <Link
-      href="#accueil"
+      href="/"
       onClick={handleLogoClick}
       className="navbar-brand block py-1"
       style={{
