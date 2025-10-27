@@ -12,75 +12,79 @@ const ContactSection = () => {
           </h2>
         </div>
 
-        <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
+        <div className="max-w-7xl mx-auto space-y-8">
           {/* Notice d'inscription */}
-          <div className="lg:sticky lg:top-20 lg:h-fit">
-            <div
-              id="inscription-info"
-              className="rounded-xl bg-amber-50 border-2 border-amber-200 p-8 h-full flex flex-col"
-            >
-              <h3 className="text-2xl font-bold text-amber-900 mb-4">
-                📝 Informations d&apos;inscription
-              </h3>
-              <p className="text-lg font-semibold text-amber-800 mb-3">
-                Les inscriptions se feront uniquement sur place.
-              </p>
-              <p className="text-sm text-amber-700 mb-6 flex-grow">
-                Venez nous rencontrer au Gymnase des Chênes pour finaliser votre
-                inscription. Séance d&apos;essai gratuite disponible.
-              </p>
-
-              {/* Bouton PDF optionnel */}
-              <a
-                href="#"
-                className="inline-flex items-center justify-center gap-2 rounded-lg bg-amber-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-amber-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-600 focus-visible:ring-offset-2"
-                onClick={(e) => {
-                  e.preventDefault();
-                  // TODO: Remplacer par le vrai lien PDF quand disponible
-                  alert(
-                    "Le dossier d'inscription sera bientôt disponible. Contactez-nous directement pour plus d'informations.",
-                  );
-                }}
+          <div
+            id="inscription-info"
+            className="rounded-xl bg-primary/5 border-2 border-primary/20 p-8 text-center"
+          >
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <svg
+                className="h-8 w-8 text-primary"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
               >
-                <svg
-                  className="h-5 w-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
-                  />
-                </svg>
-                Télécharger le dossier d&apos;inscription (PDF)
-              </a>
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <h3 className="text-2xl font-bold text-dark">
+                Informations d&apos;inscription
+              </h3>
             </div>
+            <p className="text-lg font-semibold text-slate-800 mb-4">
+              Les inscriptions se feront uniquement sur place.
+            </p>
+            <p className="text-sm text-slate-700 mb-6">
+              Venez nous rencontrer au Gymnase des Chênes pour finaliser votre
+              inscription. Séance d&apos;essai gratuite disponible.
+            </p>
+
+            {/* Bouton PDF optionnel */}
+            <a
+              href="#"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-8 py-3 font-semibold text-white transition hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+              onClick={(e) => {
+                e.preventDefault();
+                // TODO: Remplacer par le vrai lien PDF quand disponible
+                alert(
+                  "Le dossier d'inscription sera bientôt disponible. Contactez-nous directement pour plus d'informations.",
+                );
+              }}
+            >
+              <svg
+                className="h-5 w-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                />
+              </svg>
+              Télécharger le dossier d&apos;inscription (PDF)
+            </a>
           </div>
 
           {/* Infos gymnase */}
-          <div className="space-y-6">
-            <div className="rounded-lg border border-slate-200 bg-slate-50 p-8">
-              <h4 className="text-xl font-semibold text-slate-900 mb-6">
+          <div className="grid gap-8 md:grid-cols-2">
+            <div className="rounded-lg border border-slate-200 bg-white p-8">
+              <h4 className="text-2xl font-bold text-slate-900 mb-6">
                 Gymnase des Chênes — Cergy
               </h4>
 
               <div className="space-y-6">
                 <div>
-                  <p className="font-semibold text-dark mb-2">📍 Adresse</p>
-                  <p className="text-slate-700 mb-3">
-                    Rue des Chênes Pourpres, 95000 Cergy
-                  </p>
-                  <a
-                    href="https://maps.google.com/?q=Rue+des+Chênes+Pourpres+95000+Cergy"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-primary hover:underline font-medium"
-                  >
+                  <p className="font-semibold text-dark mb-2 flex items-center gap-2">
                     <svg
-                      className="h-5 w-5"
+                      className="h-5 w-5 text-primary"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -98,13 +102,37 @@ const ContactSection = () => {
                         d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                       />
                     </svg>
-                    Ouvrir dans Maps
+                    Adresse
+                  </p>
+                  <p className="text-slate-700 mb-3">
+                    Rue des Chênes Pourpres, 95000 Cergy
+                  </p>
+                  <a
+                    href="https://maps.google.com/?q=Rue+des+Chênes+Pourpres+95000+Cergy"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-primary hover:underline font-medium"
+                  >
+                    Ouvrir dans Maps →
                   </a>
                 </div>
 
                 <div>
-                  <p className="font-semibold text-dark mb-3">
-                    🕒 Horaires d&apos;ouverture
+                  <p className="font-semibold text-dark mb-3 flex items-center gap-2">
+                    <svg
+                      className="h-5 w-5 text-slate-500"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    Horaires d&apos;ouverture
                   </p>
                   <ul className="space-y-2 text-slate-700">
                     <li>Lundi - Vendredi : 10h - 22h</li>
@@ -115,13 +143,9 @@ const ContactSection = () => {
 
                 {social.email && (
                   <div>
-                    <p className="font-semibold text-dark mb-2">📧 Email</p>
-                    <a
-                      href={`mailto:${social.email}`}
-                      className="inline-flex items-center gap-2 text-primary hover:underline font-medium"
-                    >
+                    <p className="font-semibold text-dark mb-2 flex items-center gap-2">
                       <svg
-                        className="h-5 w-5"
+                        className="h-5 w-5 text-slate-500"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -133,25 +157,31 @@ const ContactSection = () => {
                           d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                         />
                       </svg>
+                      Email
+                    </p>
+                    <a
+                      href={`mailto:${social.email}`}
+                      className="inline-flex items-center gap-2 text-primary hover:underline font-medium"
+                    >
                       {social.email}
                     </a>
                   </div>
                 )}
               </div>
             </div>
-          </div>
-        </div>
 
-        {/* Carte pleine largeur */}
-        <div className="overflow-hidden rounded-lg border border-slate-200 shadow-lg">
-          <iframe
-            title="Plan du Gymnase des Chênes à Cergy"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.123456789!2d2.0371!3d49.0411!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e6f8c8c8c8c8c8%3A0x1234567890abcdef!2sRue%20des%20Ch%C3%AAnes%20Pourpres%2C%2095000%20Cergy!5e0!3m2!1sfr!2sfr!4v1640000000000"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            className="h-[500px] w-full border-0"
-            allowFullScreen
-          />
+            {/* Map */}
+            <div className="rounded-lg border border-slate-200 bg-white overflow-hidden">
+              <iframe
+                title="Plan du Gymnase des Chênes à Cergy"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.123456789!2d2.0371!3d49.0411!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e6f8c8c8c8c8c8%3A0x1234567890abcdef!2sRue%20des%20Ch%C3%AAnes%20Pourpres%2C%2095000%20Cergy!5e0!3m2!1sfr!2sfr!4v1640000000000"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="h-full w-full min-h-[400px] border-0"
+                allowFullScreen
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>
