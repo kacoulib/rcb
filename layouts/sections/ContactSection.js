@@ -1,186 +1,68 @@
 "use client";
 
 import social from "@config/social.json";
-import { useState } from "react";
 
 const ContactSection = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const { name, email, message } = formData;
-
-    // Créer le sujet et le corps de l'email
-    const subject = `Message de ${name} via le site RCB95`;
-    const body = `Nom: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
-
-    // Encoder les paramètres pour l'URL mailto
-    const encodedSubject = encodeURIComponent(subject);
-    const encodedBody = encodeURIComponent(body);
-
-    // Créer le lien mailto
-    const mailtoLink = `mailto:${social.email}?subject=${encodedSubject}&body=${encodedBody}`;
-
-    // Ouvrir le client de messagerie
-    window.location.href = mailtoLink;
-
-    // Optionnel : réinitialiser le formulaire après envoi
-    setFormData({
-      name: "",
-      email: "",
-      message: "",
-    });
-  };
   return (
     <section id="contact" className="bg-white py-16 sm:py-20">
       <div className="container mx-auto max-w-6xl px-4 space-y-12">
-        <div className="space-y-6 text-center">
+        <div className="text-center">
           <h2 className="text-3xl font-bold text-dark sm:text-4xl">
             Contactez-nous
           </h2>
-
-          {/* Notice d'inscription */}
-          <div className="mx-auto max-w-3xl rounded-xl bg-amber-50 border-2 border-amber-200 p-6">
-            <h3 className="text-xl font-bold text-amber-900 mb-3">
-              📝 Inscriptions
-            </h3>
-            <p className="text-lg font-semibold text-amber-800 mb-2">
-              Les inscriptions se feront uniquement sur place.
-            </p>
-            <p className="text-sm text-amber-700 mb-4">
-              Venez nous rencontrer au Gymnase des Chênes pour finaliser votre
-              inscription. Séance d&apos;essai gratuite disponible.
-            </p>
-
-            {/* Bouton PDF optionnel */}
-            <a
-              href="#"
-              className="inline-flex items-center gap-2 rounded-lg bg-amber-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-amber-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-600 focus-visible:ring-offset-2"
-              onClick={(e) => {
-                e.preventDefault();
-                // TODO: Remplacer par le vrai lien PDF quand disponible
-                alert(
-                  "Le dossier d'inscription sera bientôt disponible. Contactez-nous directement pour plus d'informations.",
-                );
-              }}
-            >
-              <svg
-                className="h-5 w-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
-                />
-              </svg>
-              Télécharger le dossier d&apos;inscription (PDF)
-            </a>
-          </div>
         </div>
 
-        <div className="grid gap-12 lg:grid-cols-2">
-          {/* Formulaire */}
-          <div className="flex h-full flex-col space-y-6">
-            <h3 className="text-2xl font-semibold text-slate-900">
-              Ou envoyez un message
-            </h3>
-            <form
-              onSubmit={handleSubmit}
-              className="flex h-full flex-1 flex-col justify-between rounded-lg border border-slate-200 bg-white p-6 shadow-sm"
+        <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
+          {/* Notice d'inscription */}
+          <div className="lg:sticky lg:top-20 lg:h-fit">
+            <div
+              id="inscription-info"
+              className="rounded-xl bg-amber-50 border-2 border-amber-200 p-8 h-full flex flex-col"
             >
-              <div className="space-y-6">
-                <div className="grid gap-6 md:grid-cols-2">
-                  <div className="flex flex-col">
-                    <label
-                      htmlFor="name"
-                      className="mb-2 text-sm font-medium text-slate-700"
-                    >
-                      Nom
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      required
-                      placeholder="Votre nom"
-                      className="w-full rounded-md border border-slate-300 px-4 py-3 text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                    />
-                  </div>
-                  <div className="flex flex-col">
-                    <label
-                      htmlFor="email"
-                      className="mb-2 text-sm font-medium text-slate-700"
-                    >
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      required
-                      placeholder="votre@email.com"
-                      className="w-full rounded-md border border-slate-300 px-4 py-3 text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                    />
-                  </div>
-                </div>
-                <div className="flex flex-col flex-1">
-                  <label
-                    htmlFor="message"
-                    className="mb-2 text-sm font-medium text-slate-700"
-                  >
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    required
-                    rows={8}
-                    placeholder="Votre message"
-                    className="w-full flex-1 rounded-md border border-slate-300 px-4 py-3 text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                  />
-                </div>
-              </div>
-              <div className="mt-6 flex justify-end">
-                <button
-                  type="submit"
-                  className="rounded-md bg-primary px-6 py-3 text-sm font-semibold text-white transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 hover:bg-primary/90"
+              <h3 className="text-2xl font-bold text-amber-900 mb-4">
+                📝 Informations d&apos;inscription
+              </h3>
+              <p className="text-lg font-semibold text-amber-800 mb-3">
+                Les inscriptions se feront uniquement sur place.
+              </p>
+              <p className="text-sm text-amber-700 mb-6 flex-grow">
+                Venez nous rencontrer au Gymnase des Chênes pour finaliser votre
+                inscription. Séance d&apos;essai gratuite disponible.
+              </p>
+
+              {/* Bouton PDF optionnel */}
+              <a
+                href="#"
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-amber-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-amber-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-600 focus-visible:ring-offset-2"
+                onClick={(e) => {
+                  e.preventDefault();
+                  // TODO: Remplacer par le vrai lien PDF quand disponible
+                  alert(
+                    "Le dossier d'inscription sera bientôt disponible. Contactez-nous directement pour plus d'informations.",
+                  );
+                }}
+              >
+                <svg
+                  className="h-5 w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
                 >
-                  Envoyer
-                </button>
-              </div>
-            </form>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                  />
+                </svg>
+                Télécharger le dossier d&apos;inscription (PDF)
+              </a>
+            </div>
           </div>
 
           {/* Infos gymnase */}
-          <div className="flex h-full flex-col space-y-6">
-            <h3 className="text-2xl font-semibold text-slate-900">
-              Notre Gymnase
-            </h3>
-
-            <div className="flex h-full flex-1 flex-col justify-center rounded-lg border border-slate-200 bg-slate-50 p-8">
+          <div className="space-y-6">
+            <div className="rounded-lg border border-slate-200 bg-slate-50 p-8">
               <h4 className="text-xl font-semibold text-slate-900 mb-6">
                 Gymnase des Chênes — Cergy
               </h4>

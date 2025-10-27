@@ -181,19 +181,26 @@ const PricingSection = () => {
                   </li>
                 ))}
               </ul>
-              <a
-                href="#contact"
+              <button
                 onClick={(e) => {
-                  e.preventDefault();
-                  document.querySelector("#contact")?.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start",
-                  });
+                  // Scroller vers la section d'inscription (pas contact) avec un offset pour le header
+                  const target = document.querySelector("#inscription-info");
+                  if (target) {
+                    const headerOffset = 100;
+                    const elementPosition =
+                      target.getBoundingClientRect().top + window.pageYOffset;
+                    const offsetPosition = elementPosition - headerOffset;
+
+                    window.scrollTo({
+                      top: offsetPosition,
+                      behavior: "smooth",
+                    });
+                  }
                 }}
-                className="mt-6 rounded-lg bg-primary px-4 py-2.5 text-center text-sm font-semibold text-white transition hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                className="mt-6 w-full rounded-lg bg-primary px-4 py-2.5 text-center text-sm font-semibold text-white transition hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
               >
                 S&apos;INSCRIRE
-              </a>
+              </button>
             </div>
           ))}
         </div>

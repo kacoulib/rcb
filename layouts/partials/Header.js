@@ -2,7 +2,6 @@
 
 import Logo from "@components/Logo";
 import menu from "@config/menu.json";
-import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import config from "../../config/config.json";
 import { scrollToElement } from "@lib/utils/scrollToElement";
