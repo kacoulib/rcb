@@ -451,7 +451,7 @@ const PlanningSection = () => {
                       : "border-primary text-dark hover:bg-primary hover:text-white"
                   }`}
                 >
-                  S&apos;inscrire
+                  Plus d&apos;infos
                 </a>
               </div>
             </div>

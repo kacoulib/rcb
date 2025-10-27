@@ -127,7 +127,7 @@ const Hero = () => {
                 }}
                 className="inline-flex items-center justify-center rounded-full bg-primary px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:bg-primary/90 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
               >
-                S&apos;inscrire
+                Nous contacter
               </Link>
             </div>
           </div>

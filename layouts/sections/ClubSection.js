@@ -58,15 +58,45 @@ const ClubSection = () => {
     <section id="club" className="bg-white py-16 sm:py-20">
       <div className="container mx-auto max-w-6xl px-4">
         <div className="mb-12 text-center">
-          <h2 className="text-3xl font-bold text-dark sm:text-4xl">Le club</h2>
-          <p className="mt-6 text-lg leading-relaxed text-slate-700">
-            RCB est une association de boxe anglaise ancrée à Cergy. Nous
-            accueillons tous les publics – jeunes, adultes, féminines,
-            handi-boxe – autour d&apos;une pratique encadrée et bienveillante.
-            Nos entraîneurs diplômés accompagnent chacun selon son niveau, de la
-            découverte à la compétition. Au-delà du ring, le club cultive
-            l&apos;entraide, le respect et la progression.
-          </p>
+          <h2 className="text-3xl font-bold text-dark sm:text-4xl">
+            Présentation du club
+          </h2>
+        </div>
+
+        {/* Présentation historique */}
+        <div className="mb-16 space-y-8">
+          <div className="max-w-4xl mx-auto space-y-6 text-slate-700">
+            <p className="text-lg leading-relaxed">
+              L&apos;exploit de{" "}
+              <strong className="text-primary">Khalid Rahilou</strong> de
+              détrôner le titre mondial à un américain aux USA, a généré un
+              engouement des habitants de Cergy pour la boxe anglaise et
+              c&apos;est dans ce contexte qu&apos;est née l&apos;association{" "}
+              <strong className="text-primary">
+                &laquo; Rahilou Cergy Boxe &raquo;
+              </strong>{" "}
+              (RCB) en septembre 2006.
+            </p>
+
+            <p className="text-lg leading-relaxed">
+              Le RCB est une association Loi 1901 située à quelques pas de la
+              gare Cergy Préfecture. Elle a pour objet l&apos;enseignement, la
+              pratique et la promotion de la Boxe anglaise amateur,
+              professionnelle, loisir et éducative d&apos;assaut.
+            </p>
+
+            <p className="text-lg leading-relaxed">
+              Elle s&apos;adresse à tout public : jeune et moins jeune, filles
+              et garçons. Que vous ayez envie de vous engager en compétition, de
+              pratiquer en loisir ou tout simplement de garder la forme, le RCB
+              vous ouvre les portes de sa salle de boxe{" "}
+              <strong className="text-primary">
+                &laquo; Khalid Rahilou &raquo;
+              </strong>{" "}
+              pour vous transmettre ses valeurs : dépassement de soi et respect
+              de l&apos;autre.
+            </p>
+          </div>
         </div>
 
         {/* Coaches */}
