@@ -1,24 +1,31 @@
-import Image from "next/image";
+"use client";
 
-export const metadata = {
-  title: "Boxe pour enfants",
-  description: "Boxe éducative assaut pour les enfants au RCB - Initiation et développement en toute sécurité",
-};
+import Image from "next/image";
+import Carousel from "@layouts/components/Carousel";
 
 const EnfantPage = () => {
   return (
     <main className="bg-white text-dark">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary/10 to-primary/5 py-16 sm:py-20">
-        <div className="container mx-auto max-w-5xl px-4">
-          <h1 className="mb-6 text-4xl font-bold text-dark sm:text-5xl">
-            Boxe Éducative Assaut (BEA)
-          </h1>
-          <p className="text-xl leading-relaxed text-slate-700">
-            La boxe éducative assaut est une forme de pratique ouverte à toutes et
-            à tous. C&apos;est une pratique sans danger, puisqu&apos;elle exige de ne
-            pas nuire à son adversaire.
-          </p>
+      {/* Hero Section avec carousel enfant */}
+      <section className="relative h-[60vh] min-h-[400px] overflow-hidden">
+        <Carousel
+          tags={["young", "kids", "children", "enfants"]}
+          limit={8}
+          className="absolute inset-0"
+          showControls={true}
+          showIndicators={true}
+        />
+        <div className="relative z-10 flex h-full items-center justify-center">
+          <div className="container mx-auto max-w-5xl px-4 text-center text-white">
+            <h1 className="mb-6 text-4xl font-bold sm:text-5xl">
+              Boxe Éducative Assaut (BEA)
+            </h1>
+            <p className="text-xl leading-relaxed">
+              La boxe éducative assaut est une forme de pratique ouverte à toutes et
+              à tous. C&apos;est une pratique sans danger, puisqu&apos;elle exige de ne
+              pas nuire à son adversaire.
+            </p>
+          </div>
         </div>
       </section>
 

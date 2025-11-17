@@ -1,23 +1,31 @@
-import Image from "next/image";
+"use client";
 
-export const metadata = {
-  title: "Compétition",
-  description: "Boxe amateur et compétition au RCB - Préparation aux compétitions et accès au haut niveau",
-};
+import Image from "next/image";
+import Carousel from "@layouts/components/Carousel";
 
 const CompetitionPage = () => {
   return (
     <main className="bg-white text-dark">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary/10 to-primary/5 py-16 sm:py-20">
-        <div className="container mx-auto max-w-5xl px-4">
-          <h1 className="mb-6 text-4xl font-bold text-dark sm:text-5xl">
-            Boxe Amateur & Compétition
-          </h1>
-          <p className="text-xl leading-relaxed text-slate-700">
-            La boxe pratiquée aux Jeux Olympiques, réservée à ceux qui souhaitent
-            faire de la compétition où la recherche d&apos;efficacité et le KO sont autorisés.
-          </p>
+      {/* Hero Section avec carousel compétition */}
+      <section className="relative h-[60vh] min-h-[400px] overflow-hidden">
+        <Carousel
+          tags={["competition", "cup", "trophy", "combat"]}
+          limit={8}
+          className="absolute inset-0"
+          showControls={true}
+          showIndicators={true}
+        />
+        <div className="relative z-10 flex h-full items-center justify-center">
+          <div className="container mx-auto max-w-5xl px-4 text-center text-white">
+            <h1 className="mb-6 text-4xl font-bold sm:text-5xl">
+              Boxe Amateur & Compétition
+            </h1>
+            <p className="text-xl leading-relaxed">
+              La boxe pratiquée aux Jeux Olympiques, réservée à ceux qui
+              souhaitent faire de la compétition où la recherche
+              d&apos;efficacité et le KO sont autorisés.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -27,17 +35,18 @@ const CompetitionPage = () => {
           <div className="space-y-8 text-slate-700">
             <div className="prose prose-lg max-w-none">
               <p className="text-lg leading-relaxed">
-                Les acquisitions technique, tactique, physique et psychologique sont
-                essentielles pour engranger des points. Chaque coup porté et réussi
-                est pris en compte. Cette pratique permet notamment d&apos;accéder au
-                Haut Niveau, toutes les composantes de la performance sont abordées.
+                Les acquisitions technique, tactique, physique et psychologique
+                sont essentielles pour engranger des points. Chaque coup porté
+                et réussi est pris en compte. Cette pratique permet notamment
+                d&apos;accéder au Haut Niveau, toutes les composantes de la
+                performance sont abordées.
               </p>
 
               <p className="text-lg leading-relaxed">
-                L&apos;entraînement est exigeant et très rigoureux, le passage à la
-                compétition est validé par l&apos;entraîneur qui veille avant tout à
-                accompagner le boxeur dans sa formation pour que ce dernier soit
-                capable de veiller à son intégrité physique.
+                L&apos;entraînement est exigeant et très rigoureux, le passage à
+                la compétition est validé par l&apos;entraîneur qui veille avant
+                tout à accompagner le boxeur dans sa formation pour que ce
+                dernier soit capable de veiller à son intégrité physique.
               </p>
 
               <div className="my-8 rounded-lg border-l-4 border-primary bg-primary/5 p-6">
@@ -46,8 +55,9 @@ const CompetitionPage = () => {
                 </h3>
                 <p className="text-base leading-relaxed">
                   La pratique nécessite le passage d&apos;examens médicaux et
-                  ophtalmologique. Après 32 ans, les pratiquants sont soumis à des
-                  examens complémentaires (test d&apos;effort et IRM cérébral).
+                  ophtalmologique. Après 32 ans, les pratiquants sont soumis à
+                  des examens complémentaires (test d&apos;effort et IRM
+                  cérébral).
                 </p>
               </div>
             </div>
@@ -180,9 +190,7 @@ const CompetitionPage = () => {
       {/* CTA Section */}
       <section className="bg-primary py-16 text-white">
         <div className="container mx-auto max-w-4xl px-4 text-center">
-          <h2 className="mb-6 text-3xl font-bold">
-            Prêt à relever le défi ?
-          </h2>
+          <h2 className="mb-6 text-3xl font-bold">Prêt à relever le défi ?</h2>
           <p className="mb-8 text-lg opacity-90">
             Rejoignez notre section compétition et développez votre potentiel
             avec nos entraîneurs expérimentés.
@@ -200,4 +208,3 @@ const CompetitionPage = () => {
 };
 
 export default CompetitionPage;
-

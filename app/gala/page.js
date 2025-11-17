@@ -1,23 +1,30 @@
-import Image from "next/image";
+"use client";
 
-export const metadata = {
-  title: "Gala & Événements",
-  description: "Galas de boxe et événements organisés par le RCB - Découvrez nos événements sportifs",
-};
+import Image from "next/image";
+import Carousel from "@layouts/components/Carousel";
 
 const GalaPage = () => {
   return (
     <main className="bg-white text-dark">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary/10 to-primary/5 py-16 sm:py-20">
-        <div className="container mx-auto max-w-5xl px-4">
-          <h1 className="mb-6 text-4xl font-bold text-dark sm:text-5xl">
-            Gala & Événements
-          </h1>
-          <p className="text-xl leading-relaxed text-slate-700">
-            Le RCB organise régulièrement des galas de boxe et des événements
-            sportifs pour promouvoir la boxe et rassembler la communauté.
-          </p>
+      {/* Hero Section avec carousel gala */}
+      <section className="relative h-[60vh] min-h-[400px] overflow-hidden">
+        <Carousel
+          tags={["gala", "event", "celebration"]}
+          limit={8}
+          className="absolute inset-0"
+          showControls={true}
+          showIndicators={true}
+        />
+        <div className="relative z-10 flex h-full items-center justify-center">
+          <div className="container mx-auto max-w-5xl px-4 text-center text-white">
+            <h1 className="mb-6 text-4xl font-bold sm:text-5xl">
+              Gala & Événements
+            </h1>
+            <p className="text-xl leading-relaxed">
+              Le RCB organise régulièrement des galas de boxe et des événements
+              sportifs pour promouvoir la boxe et rassembler la communauté.
+            </p>
+          </div>
         </div>
       </section>
 

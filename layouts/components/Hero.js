@@ -1,15 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { scrollToElement } from "@lib/utils/scrollToElement";
+import Carousel from "@components/Carousel";
 
 const Hero = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  // Images du carousel
-  const carouselImages = [
+  // Images par défaut si aucune image avec le tag "hero" n'est trouvée
+  const defaultImages = [
     {
       src: "/images/blog-1.jpg",
       alt: "Entraînement au sac de frappe dans la salle du club",
@@ -32,55 +29,20 @@ const Hero = () => {
     },
   ];
 
-  // Auto-rotation du carousel
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % carouselImages.length);
-    }, 5000); // Change d'image toutes les 5 secondes
-
-    return () => clearInterval(interval);
-  }, [carouselImages.length]);
-
-  const goToSlide = (index) => {
-    setCurrentSlide(index);
-  };
-
-  const goToPrevious = () => {
-    setCurrentSlide(
-      (prev) => (prev - 1 + carouselImages.length) % carouselImages.length,
-    );
-  };
-
-  const goToNext = () => {
-    setCurrentSlide((prev) => (prev + 1) % carouselImages.length);
-  };
-
   return (
     <section className="relative h-[calc(100vh-100px)] overflow-hidden pt-20 md:pt-24">
-      {/* Carousel Background */}
-      <div className="absolute inset-0">
-        {carouselImages.map((image, index) => (
-          <div
-            key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 ${
-              index === currentSlide ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            <Image
-              src={image.src}
-              alt={image.alt}
-              fill
-              className="object-cover"
-              priority={index === 0}
-            />
-            {/* Overlay sombre pour améliorer la lisibilité du texte */}
-            <div className="absolute inset-0 bg-black bg-opacity-40" />
-          </div>
-        ))}
-      </div>
+      {/* Carousel avec tag "hero" pour la page d'accueil */}
+      <Carousel
+        tags={["hero", "carousel", "featured"]}
+        limit={10}
+        defaultImages={defaultImages}
+        className="absolute inset-0 z-0"
+        showControls={true}
+        showIndicators={true}
+      />
 
       {/* Contenu principal */}
-      <div className="relative z-10 flex h-full items-center justify-center py-8">
+      <div className="relative z-10 flex h-full items-center justify-center py-8 pointer-events-none">
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-4xl text-center text-white">
             {/* Titre principal */}
@@ -94,7 +56,7 @@ const Hero = () => {
             </p>
 
             {/* Boutons d'action */}
-            <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+            <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center pointer-events-auto">
               <Link
                 href="#planning"
                 onClick={(e) => {
@@ -133,63 +95,6 @@ const Hero = () => {
           </div>
         </div>
       </div>
-
-      {/* Contrôles du carousel */}
-      <div className="absolute bottom-6 left-1/2 z-20 flex -translate-x-1/2 gap-2">
-        {carouselImages.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => goToSlide(index)}
-            className={`h-3 w-3 rounded-full transition-all duration-300 ${
-              index === currentSlide
-                ? "bg-white scale-125"
-                : "bg-white/50 hover:bg-white/75"
-            }`}
-            aria-label={`Aller à l'image ${index + 1}`}
-          />
-        ))}
-      </div>
-
-      {/* Boutons de navigation */}
-      <button
-        onClick={goToPrevious}
-        className="absolute left-2 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/20 p-2 sm:p-3 text-white transition-all duration-300 hover:bg-white/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white touch-manipulation"
-        aria-label="Image précédente"
-      >
-        <svg
-          className="h-5 w-5 sm:h-6 sm:w-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M15 19l-7-7 7-7"
-          />
-        </svg>
-      </button>
-
-      <button
-        onClick={goToNext}
-        className="absolute right-2 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/20 p-2 sm:p-3 text-white transition-all duration-300 hover:bg-white/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white touch-manipulation"
-        aria-label="Image suivante"
-      >
-        <svg
-          className="h-5 w-5 sm:h-6 sm:w-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M9 5l7 7-7 7"
-          />
-        </svg>
-      </button>
 
       {/* Indicateur de scroll */}
       <div className="absolute bottom-6 right-8 z-20 animate-bounce">
