@@ -13,6 +13,18 @@
       "url": "#club"
     },
     {
+      "name": "Compétition",
+      "url": "/competition"
+    },
+    {
+      "name": "Gala",
+      "url": "/gala"
+    },
+    {
+      "name": "Enfant",
+      "url": "/enfant"
+    },
+    {
       "name": "Contact",
       "url": "#contact"
     }
@@ -32,6 +44,18 @@
         {
           "text": "Le club",
           "url": "#club"
+        },
+        {
+          "text": "Compétition",
+          "url": "/competition"
+        },
+        {
+          "text": "Gala",
+          "url": "/gala"
+        },
+        {
+          "text": "Enfant",
+          "url": "/enfant"
         },
         {
           "text": "Contact",

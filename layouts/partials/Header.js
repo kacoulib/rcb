@@ -2,6 +2,7 @@
 
 import Logo from "@components/Logo";
 import menu from "@config/menu.json";
+import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import config from "../../config/config.json";
 import { scrollToElement } from "@lib/utils/scrollToElement";
@@ -72,15 +73,13 @@ const Header = () => {
     e.preventDefault();
     setNavOpen(false);
 
-    if (url.startsWith("#")) {
-      // S'assurer que le header est visible avant de scroller
-      setIsHeaderVisible(true);
+    // S'assurer que le header est visible avant de scroller
+    setIsHeaderVisible(true);
 
-      // Petit délai pour laisser le temps à l'animation de se terminer
-      setTimeout(() => {
-        scrollToElement(url);
-      }, 350); // Légèrement plus long que la durée de l'animation (300ms)
-    }
+    // Petit délai pour laisser le temps à l'animation de se terminer
+    setTimeout(() => {
+      scrollToElement(url);
+    }, 350); // Légèrement plus long que la durée de l'animation (300ms)
   };
 
   return (
@@ -136,13 +135,23 @@ const Header = () => {
           <ul className="navbar-nav block w-full md:flex md:w-auto md:items-center lg:space-x-1">
             {main.map((menuItem, i) => (
               <li className="nav-item" key={`menu-${i}`}>
-                <a
-                  href={menuItem.url}
-                  onClick={(e) => handleMenuClick(e, menuItem.url)}
-                  className="nav-link block px-4 py-3 transition hover:text-primary hover:bg-gray-50 md:hover:bg-transparent"
-                >
-                  {menuItem.name}
-                </a>
+                {menuItem.url.startsWith("#") ? (
+                  <a
+                    href={menuItem.url}
+                    onClick={(e) => handleMenuClick(e, menuItem.url)}
+                    className="nav-link block px-4 py-3 transition hover:text-primary hover:bg-gray-50 md:hover:bg-transparent"
+                  >
+                    {menuItem.name}
+                  </a>
+                ) : (
+                  <Link
+                    href={menuItem.url}
+                    onClick={() => setNavOpen(false)}
+                    className="nav-link block px-4 py-3 transition hover:text-primary hover:bg-gray-50 md:hover:bg-transparent"
+                  >
+                    {menuItem.name}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>

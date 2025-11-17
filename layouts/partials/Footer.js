@@ -5,6 +5,7 @@ import menu from "@config/menu.json";
 import social from "@config/social.json";
 import { scrollToElement } from "@lib/utils/scrollToElement";
 import Image from "next/image";
+import Link from "next/link";
 
 const Footer = () => {
   const { footer } = menu;
@@ -113,13 +114,22 @@ const Footer = () => {
             <ul className="space-y-2 md:space-y-3 text-center">
               {footerColumns[0]?.menu.map((item) => (
                 <li key={item.text}>
-                  <a
-                    href={item.url}
-                    onClick={(e) => handleScroll(e, item.url)}
-                    className="text-sm text-slate-200 transition hover:text-white hover:underline md:text-base"
-                  >
-                    {item.text}
-                  </a>
+                  {item.url.startsWith("#") ? (
+                    <a
+                      href={item.url}
+                      onClick={(e) => handleScroll(e, item.url)}
+                      className="text-sm text-slate-200 transition hover:text-white hover:underline md:text-base"
+                    >
+                      {item.text}
+                    </a>
+                  ) : (
+                    <Link
+                      href={item.url}
+                      className="text-sm text-slate-200 transition hover:text-white hover:underline md:text-base"
+                    >
+                      {item.text}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>

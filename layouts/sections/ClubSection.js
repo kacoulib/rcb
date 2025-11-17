@@ -96,6 +96,59 @@ const ClubSection = () => {
               pour vous transmettre ses valeurs : dépassement de soi et respect
               de l&apos;autre.
             </p>
+
+            <p className="text-lg leading-relaxed">
+              Que tu sois néophyte ou expérimenté, n&apos;hésites pas à te joindre au RCB.
+              Nous proposons de la boxe éducative, loisir et compétiteur pour tous niveaux.
+            </p>
+          </div>
+        </div>
+
+        {/* Timeline historique de Khalid Rahilou */}
+        <div className="mb-16">
+          <div className="mb-12 text-center">
+            <h3 className="text-2xl font-semibold text-dark">
+              L&apos;histoire de Khalid Rahilou
+            </h3>
+            <p className="mt-4 text-base text-slate-600">
+              Un parcours exceptionnel qui a inspiré la création du club
+            </p>
+          </div>
+          <div className="max-w-4xl mx-auto">
+            <div className="space-y-8">
+              {[
+                { date: "1987/11", title: "Les débuts de Khalid" },
+                { date: "1996/12", title: "Champion d'Europe" },
+                { date: "1997/02", title: "Titre mondial" },
+                { date: "1998/09", title: "Inauguration place Marcel Cerdan" },
+                { date: "2006/09", title: "Création de l'association RCB" },
+                { date: "2008/08", title: "Création de la Ligue Pro « GNBP »" },
+                { date: "2013/12", title: "Sacre mondial de Gaëlle" },
+                { date: "2014/01", title: "Le grand jour de Gaëlle" },
+                { date: "2016/11", title: "Cergy by Gaëlle" },
+                { date: "2019/03", title: "50 ans de Cergy" },
+                { date: "2022/03", title: "Cergy A fond la forme avec Gaëlle" },
+              ].map((event, index) => (
+                <div
+                  key={index}
+                  className="flex items-start gap-4 border-l-2 border-primary pl-6 pb-8 last:pb-0"
+                >
+                  <div className="flex-shrink-0">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-white font-semibold">
+                      {index + 1}
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <div className="text-sm font-medium text-primary mb-1">
+                      {event.date}
+                    </div>
+                    <div className="text-lg font-semibold text-dark">
+                      {event.title}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
