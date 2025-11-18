@@ -17,7 +17,7 @@ const GalaPage = () => {
         />
         <div className="relative z-10 flex h-full items-center justify-center">
           <div className="container mx-auto max-w-5xl px-4 text-center text-white">
-            <h1 className="mb-6 text-4xl font-bold sm:text-5xl">
+            <h1 className="mb-6 text-4xl font-bold sm:text-5xl text-white">
               Gala & Événements
             </h1>
             <p className="text-xl leading-relaxed">
@@ -34,17 +34,18 @@ const GalaPage = () => {
           <div className="space-y-8 text-slate-700">
             <div className="prose prose-lg max-w-none">
               <p className="text-lg leading-relaxed">
-                Les galas de boxe organisés par le RCB sont des moments forts qui
-                rassemblent la communauté autour de la passion du noble art. Ces
-                événements permettent de mettre en valeur nos boxeurs, de promouvoir
-                la boxe anglaise et de créer des liens entre les pratiquants, les
-                familles et les partenaires du club.
+                Les galas de boxe organisés par le RCB sont des moments forts
+                qui rassemblent la communauté autour de la passion du noble art.
+                Ces événements permettent de mettre en valeur nos boxeurs, de
+                promouvoir la boxe anglaise et de créer des liens entre les
+                pratiquants, les familles et les partenaires du club.
               </p>
 
               <p className="text-lg leading-relaxed">
-                Que ce soit pour assister à des combats de haut niveau, découvrir
-                les talents émergents du club ou simplement partager un moment
-                convivial autour de la boxe, nos galas sont ouverts à tous.
+                Que ce soit pour assister à des combats de haut niveau,
+                découvrir les talents émergents du club ou simplement partager
+                un moment convivial autour de la boxe, nos galas sont ouverts à
+                tous.
               </p>
             </div>
           </div>
@@ -188,4 +189,3 @@ const GalaPage = () => {
 };
 
 export default GalaPage;
-

@@ -17,7 +17,7 @@ const CompetitionPage = () => {
         />
         <div className="relative z-10 flex h-full items-center justify-center">
           <div className="container mx-auto max-w-5xl px-4 text-center text-white">
-            <h1 className="mb-6 text-4xl font-bold sm:text-5xl">
+            <h1 className="mb-6 text-4xl font-bold sm:text-5xl text-white">
               Boxe Amateur & Compétition
             </h1>
             <p className="text-xl leading-relaxed">

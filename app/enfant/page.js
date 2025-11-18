@@ -9,7 +9,7 @@ const EnfantPage = () => {
       {/* Hero Section avec carousel enfant */}
       <section className="relative h-[60vh] min-h-[400px] overflow-hidden">
         <Carousel
-          tags={["young", "kids", "children", "enfants"]}
+          tags={["young"]}
           limit={8}
           className="absolute inset-0"
           showControls={true}
@@ -17,13 +17,13 @@ const EnfantPage = () => {
         />
         <div className="relative z-10 flex h-full items-center justify-center">
           <div className="container mx-auto max-w-5xl px-4 text-center text-white">
-            <h1 className="mb-6 text-4xl font-bold sm:text-5xl">
+            <h1 className="mb-6 text-4xl font-bold sm:text-5xl text-white">
               Boxe Éducative Assaut (BEA)
             </h1>
             <p className="text-xl leading-relaxed">
-              La boxe éducative assaut est une forme de pratique ouverte à toutes et
-              à tous. C&apos;est une pratique sans danger, puisqu&apos;elle exige de ne
-              pas nuire à son adversaire.
+              La boxe éducative assaut est une forme de pratique ouverte à
+              toutes et à tous. C&apos;est une pratique sans danger,
+              puisqu&apos;elle exige de ne pas nuire à son adversaire.
             </p>
           </div>
         </div>
@@ -35,17 +35,17 @@ const EnfantPage = () => {
           <div className="space-y-8 text-slate-700">
             <div className="prose prose-lg max-w-none">
               <p className="text-lg leading-relaxed">
-                La boxe éducative assaut est une forme de pratique ouverte à toutes
-                et à tous. C&apos;est une pratique sans danger, puisqu&apos;elle
-                exige de ne pas nuire à son adversaire par un comportement violent
-                sous peine de sanctions : le boxeur doit toucher et ne pas provoquer
-                de douleur à l&apos;adversaire.
+                La boxe éducative assaut est une forme de pratique ouverte à
+                toutes et à tous. C&apos;est une pratique sans danger,
+                puisqu&apos;elle exige de ne pas nuire à son adversaire par un
+                comportement violent sous peine de sanctions : le boxeur doit
+                toucher et ne pas provoquer de douleur à l&apos;adversaire.
               </p>
 
               <p className="text-lg leading-relaxed">
-                La pratique éducative est ludique et permet à chacun de développer
-                des compétences technico-tactique en toute sécurité (veille de
-                l&apos;intégrité physique et psychologique).
+                La pratique éducative est ludique et permet à chacun de
+                développer des compétences technico-tactique en toute sécurité
+                (veille de l&apos;intégrité physique et psychologique).
               </p>
 
               <div className="my-8 rounded-lg border-l-4 border-primary bg-primary/5 p-6">
@@ -53,16 +53,17 @@ const EnfantPage = () => {
                   Notre approche pédagogique
                 </h3>
                 <p className="text-base leading-relaxed mb-4">
-                  Au RCB, l&apos;éducation est prioritaire, permettant au plus jeune
-                  de développer leur coordination et leur motricité. À noter que la
-                  compétition est secondaire dans notre politique d&apos;apprentissage
-                  et d&apos;enseignement. La formation étant prioritaire dans la
-                  recherche d&apos;évolution en toute sécurité.
+                  Au RCB, l&apos;éducation est prioritaire, permettant au plus
+                  jeune de développer leur coordination et leur motricité. À
+                  noter que la compétition est secondaire dans notre politique
+                  d&apos;apprentissage et d&apos;enseignement. La formation
+                  étant prioritaire dans la recherche d&apos;évolution en toute
+                  sécurité.
                 </p>
                 <p className="text-base leading-relaxed">
-                  La compétition et l&apos;évaluation de la progression technique
-                  sont en effet uniquement proposées à partir des Benjamins ayant
-                  validé un certain nombre de compétences.
+                  La compétition et l&apos;évaluation de la progression
+                  technique sont en effet uniquement proposées à partir des
+                  Benjamins ayant validé un certain nombre de compétences.
                 </p>
               </div>
             </div>
@@ -195,12 +196,11 @@ const EnfantPage = () => {
       {/* CTA Section */}
       <section className="bg-primary py-16 text-white">
         <div className="container mx-auto max-w-4xl px-4 text-center">
-          <h2 className="mb-6 text-3xl font-bold">
-            Inscrivez votre enfant
-          </h2>
+          <h2 className="mb-6 text-3xl font-bold">Inscrivez votre enfant</h2>
           <p className="mb-8 text-lg opacity-90">
-            Rejoignez notre section enfants et offrez à votre enfant une activité
-            sportive enrichissante dans un cadre sécurisé et bienveillant.
+            Rejoignez notre section enfants et offrez à votre enfant une
+            activité sportive enrichissante dans un cadre sécurisé et
+            bienveillant.
           </p>
           <a
             href="#contact"
@@ -215,4 +215,3 @@ const EnfantPage = () => {
 };
 
 export default EnfantPage;
-
