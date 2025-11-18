@@ -3,6 +3,7 @@
 import Logo from "@components/Logo";
 import menu from "@config/menu.json";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React, { useState, useEffect } from "react";
 import config from "../../config/config.json";
 import { scrollToElement } from "@lib/utils/scrollToElement";
@@ -10,6 +11,13 @@ import { scrollToElement } from "@lib/utils/scrollToElement";
 const Header = () => {
   // distructuring the main menu from menu object
   const { main } = menu;
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
+
+  // Fonction pour déclencher le loading via un événement personnalisé
+  const triggerLoading = () => {
+    window.dispatchEvent(new CustomEvent("startLoading"));
+  };
 
   // states declaration
   const [navOpen, setNavOpen] = useState(false);
@@ -73,13 +81,22 @@ const Header = () => {
     e.preventDefault();
     setNavOpen(false);
 
-    // S'assurer que le header est visible avant de scroller
-    setIsHeaderVisible(true);
+    // Si on est sur la page d'accueil, scroller vers la section
+    if (isHomePage) {
+      // S'assurer que le header est visible avant de scroller
+      setIsHeaderVisible(true);
 
-    // Petit délai pour laisser le temps à l'animation de se terminer
-    setTimeout(() => {
-      scrollToElement(url);
-    }, 350); // Légèrement plus long que la durée de l'animation (300ms)
+      // Petit délai pour laisser le temps à l'animation de se terminer
+      setTimeout(() => {
+        scrollToElement(url);
+      }, 350);
+    } else {
+      // Si on est sur une autre page, rediriger vers la page d'accueil avec l'ancre
+      triggerLoading();
+      setTimeout(() => {
+        window.location.href = `/${url}`;
+      }, 100);
+    }
   };
 
   return (
@@ -133,27 +150,91 @@ const Header = () => {
     transition-[max-height,opacity] duration-300 overflow-hidden z-40`}
         >
           <ul className="navbar-nav block w-full md:flex md:w-auto md:items-center lg:space-x-1">
-            {main.map((menuItem, i) => (
-              <li className="nav-item" key={`menu-${i}`}>
-                {menuItem.url.startsWith("#") ? (
-                  <a
-                    href={menuItem.url}
-                    onClick={(e) => handleMenuClick(e, menuItem.url)}
-                    className="nav-link block px-4 py-3 transition hover:text-primary hover:bg-gray-50 md:hover:bg-transparent"
-                  >
-                    {menuItem.name}
-                  </a>
-                ) : (
-                  <Link
-                    href={menuItem.url}
-                    onClick={() => setNavOpen(false)}
-                    className="nav-link block px-4 py-3 transition hover:text-primary hover:bg-gray-50 md:hover:bg-transparent"
-                  >
-                    {menuItem.name}
-                  </Link>
-                )}
-              </li>
-            ))}
+            {main.map((menuItem, i) => {
+              const isAnchor = menuItem.url.startsWith("#");
+              return (
+                <li className="nav-item" key={`menu-${i}`}>
+                  {isAnchor ? (
+                    isHomePage ? (
+                      <a
+                        href={menuItem.url}
+                        onClick={(e) => handleMenuClick(e, menuItem.url)}
+                        className="nav-link px-4 py-3 transition hover:text-primary hover:bg-gray-50 md:hover:bg-transparent flex items-center gap-1.5"
+                        title="Section de la page"
+                      >
+                        <span>{menuItem.name}</span>
+                        <svg
+                          className="h-3.5 w-3.5 text-slate-400"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          aria-hidden="true"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M5 10l7-7m0 0l7 7m-7-7v18"
+                          />
+                        </svg>
+                      </a>
+                    ) : (
+                      <Link
+                        href={`/${menuItem.url}`}
+                        onClick={() => {
+                          setNavOpen(false);
+                          triggerLoading();
+                        }}
+                        className="nav-link px-4 py-3 transition hover:text-primary hover:bg-gray-50 md:hover:bg-transparent flex items-center gap-1.5"
+                        title="Aller à la page d'accueil - Section"
+                      >
+                        <span>{menuItem.name}</span>
+                        <svg
+                          className="h-3.5 w-3.5 text-slate-400"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          aria-hidden="true"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M5 10l7-7m0 0l7 7m-7-7v18"
+                          />
+                        </svg>
+                      </Link>
+                    )
+                  ) : (
+                    <Link
+                      href={menuItem.url}
+                      onClick={() => {
+                        setNavOpen(false);
+                        triggerLoading();
+                      }}
+                      className="nav-link px-4 py-3 transition hover:text-primary hover:bg-gray-50 md:hover:bg-transparent flex items-center gap-1.5 font-medium"
+                      title="Nouvelle page"
+                    >
+                      <span>{menuItem.name}</span>
+                      <svg
+                        className="h-3.5 w-3.5 text-primary opacity-60"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 5l7 7-7 7"
+                        />
+                      </svg>
+                    </Link>
+                  )}
+                </li>
+              );
+            })}
           </ul>
         </div>
       </nav>

@@ -13,6 +13,10 @@
       "url": "#club"
     },
     {
+      "name": "Contact",
+      "url": "#contact"
+    },
+    {
       "name": "Compétition",
       "url": "/competition"
     },
@@ -23,10 +27,6 @@
     {
       "name": "Enfant",
       "url": "/enfant"
-    },
-    {
-      "name": "Contact",
-      "url": "#contact"
     }
   ],
   "footer": [

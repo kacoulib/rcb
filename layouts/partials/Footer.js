@@ -3,6 +3,7 @@
 import config from "@config/config.json";
 import menu from "@config/menu.json";
 import social from "@config/social.json";
+import { usePathname } from "next/navigation";
 import { scrollToElement } from "@lib/utils/scrollToElement";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,6 +14,8 @@ const Footer = () => {
     ...column,
     menu: column.menu ?? [],
   }));
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
 
   // Générer le copyright avec l'année actuelle
   const currentYear = new Date().getFullYear();
@@ -21,7 +24,12 @@ const Footer = () => {
   const handleScroll = (e, url) => {
     e.preventDefault();
     if (url.startsWith("#")) {
-      scrollToElement(url);
+      if (isHomePage) {
+        scrollToElement(url);
+      } else {
+        // Rediriger vers la page d'accueil avec l'ancre
+        window.location.href = `/${url}`;
+      }
     }
   };
 
@@ -112,26 +120,83 @@ const Footer = () => {
               Navigation
             </h3>
             <ul className="space-y-2 md:space-y-3 text-center">
-              {footerColumns[0]?.menu.map((item) => (
-                <li key={item.text}>
-                  {item.url.startsWith("#") ? (
-                    <a
-                      href={item.url}
-                      onClick={(e) => handleScroll(e, item.url)}
-                      className="text-sm text-slate-200 transition hover:text-white hover:underline md:text-base"
-                    >
-                      {item.text}
-                    </a>
-                  ) : (
-                    <Link
-                      href={item.url}
-                      className="text-sm text-slate-200 transition hover:text-white hover:underline md:text-base"
-                    >
-                      {item.text}
-                    </Link>
-                  )}
-                </li>
-              ))}
+              {footerColumns[0]?.menu.map((item) => {
+                const isAnchor = item.url.startsWith("#");
+                return (
+                  <li key={item.text}>
+                    {isAnchor ? (
+                      isHomePage ? (
+                        <a
+                          href={item.url}
+                          onClick={(e) => handleScroll(e, item.url)}
+                          className="text-sm text-slate-200 transition hover:text-white hover:underline md:text-base inline-flex items-center gap-1.5 justify-center"
+                          title="Section de la page"
+                        >
+                          <span>{item.text}</span>
+                          <svg
+                            className="h-3 w-3 text-slate-400"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M5 10l7-7m0 0l7 7m-7-7v18"
+                            />
+                          </svg>
+                        </a>
+                      ) : (
+                        <Link
+                          href={`/${item.url}`}
+                          className="text-sm text-slate-200 transition hover:text-white hover:underline md:text-base inline-flex items-center gap-1.5 justify-center"
+                          title="Aller à la page d'accueil - Section"
+                        >
+                          <span>{item.text}</span>
+                          <svg
+                            className="h-3 w-3 text-slate-400"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M5 10l7-7m0 0l7 7m-7-7v18"
+                            />
+                          </svg>
+                        </Link>
+                      )
+                    ) : (
+                      <Link
+                        href={item.url}
+                        className="text-sm text-slate-200 transition hover:text-white hover:underline md:text-base inline-flex items-center gap-1.5 justify-center font-medium"
+                        title="Nouvelle page"
+                      >
+                        <span>{item.text}</span>
+                        <svg
+                          className="h-3 w-3 text-white opacity-60"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          aria-hidden="true"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M9 5l7 7-7 7"
+                          />
+                        </svg>
+                      </Link>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           </div>
 

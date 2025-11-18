@@ -14,6 +14,7 @@ import { getImagesByTags } from "@lib/utils/imageGallery";
  * @param {string} props.className - Classes CSS supplémentaires
  * @param {boolean} props.showControls - Afficher les contrôles de navigation (défaut: true)
  * @param {boolean} props.showIndicators - Afficher les indicateurs de slide (défaut: true)
+ * @param {string} props.objectPosition - Position de l'image (défaut: "center center")
  */
 const Carousel = ({
   tags = [],
@@ -23,8 +24,19 @@ const Carousel = ({
   className = "",
   showControls = true,
   showIndicators = true,
+  objectPosition = "center center",
 }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
+
+  // Fonction pour mélanger aléatoirement un tableau (Fisher-Yates shuffle)
+  const shuffleArray = (array) => {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  };
 
   // Récupérer les images selon les tags avec useMemo pour éviter les recalculs
   const carouselImages = useMemo(() => {
@@ -42,21 +54,30 @@ const Carousel = ({
     }
 
     // Utiliser les images taguées si disponibles, sinon les images par défaut
+    let images = [];
     if (taggedImages.length > 0) {
-      return taggedImages.map((img) => ({
+      images = taggedImages.map((img) => ({
         src: img.path,
         alt: img.alt || img.description,
+        objectPosition: img.objectPosition || objectPosition, // Utiliser objectPosition du metadata ou la valeur par défaut
+      }));
+    } else {
+      console.log(
+        "Carousel - Utilisation des images par défaut:",
+        defaultImages.length,
+      );
+      // Ajouter objectPosition aux images par défaut si elles n'en ont pas
+      images = defaultImages.map((img) => ({
+        ...img,
+        objectPosition: img.objectPosition || objectPosition,
       }));
     }
 
-    console.log(
-      "Carousel - Utilisation des images par défaut:",
-      defaultImages.length,
-    );
-    return defaultImages;
-  }, [tags, limit, defaultImages]);
+    // Mélanger aléatoirement les images
+    return shuffleArray(images);
+  }, [tags, limit, defaultImages, objectPosition]);
 
-  // Auto-rotation du carousel
+  // Auto-rotation du carousel (auto-play)
   useEffect(() => {
     if (carouselImages.length <= 1) return;
 
@@ -106,6 +127,7 @@ const Carousel = ({
               alt={image.alt}
               fill
               className="object-cover"
+              style={{ objectPosition: image.objectPosition || objectPosition }}
               priority={index === 0}
               sizes="100vw"
               onError={(e) => {
