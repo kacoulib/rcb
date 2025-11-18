@@ -47,7 +47,7 @@ const Hero = () => {
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-4xl text-center text-white">
             {/* Titre principal */}
-            <h1 className="mb-6 text-5xl font-bold leading-tight sm:text-6xl lg:text-7xl">
+            <h1 className="mb-6 text-5xl font-bold leading-tight sm:text-6xl lg:text-7xl text-white">
               Rahilou Cergy Boxe
             </h1>
 

@@ -108,8 +108,6 @@ const Carousel = ({
     return null;
   }
 
-  console.log("Carousel - Images finales à afficher:", carouselImages);
-
   return (
     <div className={`${className} overflow-hidden`}>
       {/* Carousel Background - conteneur avec position relative pour fill */}

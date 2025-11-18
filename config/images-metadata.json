@@ -82,27 +82,11 @@
       "description": "Photo de boxeurs du club Rahilou Cergy Boxe"
     },
     {
-      "id": "img-011",
-      "filename": "image-11.jpeg",
-      "path": "/images/boxers/image-11.jpeg",
-      "tags": ["girls", "boxers", "competition", "cup", "trophy"],
-      "alt": "Photo du club RCB - Image 11",
-      "description": "Photo de boxeurs du club Rahilou Cergy Boxe"
-    },
-    {
       "id": "img-012",
       "filename": "image-12.jpeg",
       "path": "/images/boxers/image-12.jpeg",
       "tags": ["girls", "boxers", "competition", "cup", "trophy"],
       "alt": "Photo du club RCB - Image 12",
-      "description": "Photo de boxeurs du club Rahilou Cergy Boxe"
-    },
-    {
-      "id": "img-013",
-      "filename": "image-13.jpeg",
-      "path": "/images/boxers/image-13.jpeg",
-      "tags": ["girls", "boxers", "competition", "cup", "trophy"],
-      "alt": "Photo du club RCB - Image 13",
       "description": "Photo de boxeurs du club Rahilou Cergy Boxe"
     },
     {
@@ -125,7 +109,7 @@
       "id": "img-016",
       "filename": "image-16.jpeg",
       "path": "/images/boxers/image-16.jpeg",
-      "tags": ["combat", "boxers", "competition", "cup", "trophy"],
+      "tags": ["combat", "boxers", "competition"],
       "alt": "Photo du club RCB - Image 16",
       "description": "Photo de boxeurs du club Rahilou Cergy Boxe"
     },
@@ -133,7 +117,7 @@
       "id": "img-017",
       "filename": "image-17.jpeg",
       "path": "/images/boxers/image-17.jpeg",
-      "tags": ["combat", "boxers", "competition", "cup", "trophy"],
+      "tags": ["combat", "boxers", "competition"],
       "alt": "Photo du club RCB - Image 17",
       "description": "Photo de boxeurs du club Rahilou Cergy Boxe"
     },
@@ -141,7 +125,7 @@
       "id": "img-018",
       "filename": "image-18.jpeg",
       "path": "/images/boxers/image-18.jpeg",
-      "tags": ["combat", "boxers", "competition", "cup", "trophy"],
+      "tags": ["combat", "boxers", "competition"],
       "alt": "Photo du club RCB - Image 18",
       "description": "Photo de boxeurs du club Rahilou Cergy Boxe"
     },
@@ -149,7 +133,7 @@
       "id": "img-019",
       "filename": "image-19.jpeg",
       "path": "/images/boxers/image-19.jpeg",
-      "tags": ["club", "boxers"],
+      "tags": ["combat", "boxers", "competition"],
       "alt": "Photo du club RCB - Image 19",
       "description": "Photo de boxeurs du club Rahilou Cergy Boxe"
     },
@@ -157,7 +141,7 @@
       "id": "img-020",
       "filename": "image-20.jpeg",
       "path": "/images/boxers/image-20.jpeg",
-      "tags": ["club", "boxers"],
+      "tags": ["club", "cup", "trophy"],
       "alt": "Photo du club RCB - Image 20",
       "description": "Photo de boxeurs du club Rahilou Cergy Boxe"
     },
@@ -165,7 +149,7 @@
       "id": "img-021",
       "filename": "image-21.jpeg",
       "path": "/images/boxers/image-21.jpeg",
-      "tags": ["club", "boxers"],
+      "tags": ["combat", "boxers", "competition"],
       "alt": "Photo du club RCB - Image 21",
       "description": "Photo de boxeurs du club Rahilou Cergy Boxe"
     },
@@ -173,7 +157,7 @@
       "id": "img-022",
       "filename": "image-22.jpeg",
       "path": "/images/boxers/image-22.jpeg",
-      "tags": ["club", "boxers"],
+      "tags": ["club", "gala", "young"],
       "alt": "Photo du club RCB - Image 22",
       "description": "Photo de boxeurs du club Rahilou Cergy Boxe"
     },
@@ -181,7 +165,7 @@
       "id": "img-023",
       "filename": "image-23.jpeg",
       "path": "/images/boxers/image-23.jpeg",
-      "tags": ["club", "boxers"],
+      "tags": ["combat", "boxers", "competition"],
       "alt": "Photo du club RCB - Image 23",
       "description": "Photo de boxeurs du club Rahilou Cergy Boxe"
     },
@@ -189,7 +173,7 @@
       "id": "img-024",
       "filename": "image-24.jpeg",
       "path": "/images/boxers/image-24.jpeg",
-      "tags": ["club", "boxers"],
+      "tags": ["combat", "boxers", "competition"],
       "alt": "Photo du club RCB - Image 24",
       "description": "Photo de boxeurs du club Rahilou Cergy Boxe"
     },
@@ -197,7 +181,7 @@
       "id": "img-025",
       "filename": "image-25.jpeg",
       "path": "/images/boxers/image-25.jpeg",
-      "tags": ["club", "boxers"],
+      "tags": ["combat", "boxers", "competition", "young"],
       "alt": "Photo du club RCB - Image 25",
       "description": "Photo de boxeurs du club Rahilou Cergy Boxe"
     },
@@ -205,7 +189,7 @@
       "id": "img-026",
       "filename": "image-26.jpeg",
       "path": "/images/boxers/image-26.jpeg",
-      "tags": ["club", "boxers"],
+      "tags": ["combat", "boxers", "competition", "young"],
       "alt": "Photo du club RCB - Image 26",
       "description": "Photo de boxeurs du club Rahilou Cergy Boxe"
     },
@@ -213,7 +197,7 @@
       "id": "img-027",
       "filename": "image-27.jpeg",
       "path": "/images/boxers/image-27.jpeg",
-      "tags": ["club", "boxers"],
+      "tags": ["combat", "boxers", "young"],
       "alt": "Photo du club RCB - Image 27",
       "description": "Photo de boxeurs du club Rahilou Cergy Boxe"
     },
@@ -221,7 +205,7 @@
       "id": "img-028",
       "filename": "image-28.jpeg",
       "path": "/images/boxers/image-28.jpeg",
-      "tags": ["club", "boxers"],
+      "tags": ["club", "boxers", "competition", "combat"],
       "alt": "Photo du club RCB - Image 28",
       "description": "Photo de boxeurs du club Rahilou Cergy Boxe"
     },
@@ -229,7 +213,7 @@
       "id": "img-029",
       "filename": "image-29.jpeg",
       "path": "/images/boxers/image-29.jpeg",
-      "tags": ["club", "boxers"],
+      "tags": ["club", "boxers", "competition", "combat"],
       "alt": "Photo du club RCB - Image 29",
       "description": "Photo de boxeurs du club Rahilou Cergy Boxe"
     },
@@ -237,7 +221,7 @@
       "id": "img-030",
       "filename": "image-30.jpeg",
       "path": "/images/boxers/image-30.jpeg",
-      "tags": ["club", "boxers"],
+      "tags": ["boxers", "young"],
       "alt": "Photo du club RCB - Image 30",
       "description": "Photo de boxeurs du club Rahilou Cergy Boxe"
     },
@@ -245,7 +229,7 @@
       "id": "img-031",
       "filename": "image-31.jpeg",
       "path": "/images/boxers/image-31.jpeg",
-      "tags": ["club", "boxers"],
+      "tags": ["boxers", "young"],
       "alt": "Photo du club RCB - Image 31",
       "description": "Photo de boxeurs du club Rahilou Cergy Boxe"
     },
@@ -253,39 +237,23 @@
       "id": "img-032",
       "filename": "image-32.jpeg",
       "path": "/images/boxers/image-32.jpeg",
-      "tags": ["club", "boxers"],
+      "tags": ["club", "cup"],
       "alt": "Photo du club RCB - Image 32",
-      "description": "Photo de boxeurs du club Rahilou Cergy Boxe"
-    },
-    {
-      "id": "img-033",
-      "filename": "image-33.jpeg",
-      "path": "/images/boxers/image-33.jpeg",
-      "tags": ["club", "boxers"],
-      "alt": "Photo du club RCB - Image 33",
       "description": "Photo de boxeurs du club Rahilou Cergy Boxe"
     },
     {
       "id": "img-034",
       "filename": "image-34.jpeg",
       "path": "/images/boxers/image-34.jpeg",
-      "tags": ["club", "boxers"],
+      "tags": ["club", "competition"],
       "alt": "Photo du club RCB - Image 34",
-      "description": "Photo de boxeurs du club Rahilou Cergy Boxe"
-    },
-    {
-      "id": "img-035",
-      "filename": "image-35.jpeg",
-      "path": "/images/boxers/image-35.jpeg",
-      "tags": ["club", "boxers"],
-      "alt": "Photo du club RCB - Image 35",
       "description": "Photo de boxeurs du club Rahilou Cergy Boxe"
     },
     {
       "id": "img-036",
       "filename": "image-36.jpeg",
       "path": "/images/boxers/image-36.jpeg",
-      "tags": ["club", "boxers"],
+      "tags": ["club", "competition", "boxers", "cup", "trophy"],
       "alt": "Photo du club RCB - Image 36",
       "description": "Photo de boxeurs du club Rahilou Cergy Boxe"
     },
@@ -293,7 +261,7 @@
       "id": "img-037",
       "filename": "image-37.jpeg",
       "path": "/images/boxers/image-37.jpeg",
-      "tags": ["club", "boxers"],
+      "tags": ["club", "competition", "boxers", "cup", "trophy"],
       "alt": "Photo du club RCB - Image 37",
       "description": "Photo de boxeurs du club Rahilou Cergy Boxe"
     },
@@ -301,7 +269,7 @@
       "id": "img-038",
       "filename": "image-38.jpeg",
       "path": "/images/boxers/image-38.jpeg",
-      "tags": ["club", "boxers"],
+      "tags": ["club", "competition", "boxers", "cup", "trophy", "girls"],
       "alt": "Photo du club RCB - Image 38",
       "description": "Photo de boxeurs du club Rahilou Cergy Boxe"
     },
@@ -309,7 +277,7 @@
       "id": "img-039",
       "filename": "image-39.jpeg",
       "path": "/images/boxers/image-39.jpeg",
-      "tags": ["club", "boxers"],
+      "tags": ["club", "MMA"],
       "alt": "Photo du club RCB - Image 39",
       "description": "Photo de boxeurs du club Rahilou Cergy Boxe"
     },
@@ -317,7 +285,7 @@
       "id": "img-040",
       "filename": "image-40.jpeg",
       "path": "/images/boxers/image-40.jpeg",
-      "tags": ["club", "boxers"],
+      "tags": ["club", "competition", "boxers", "cup", "trophy", "girls"],
       "alt": "Photo du club RCB - Image 40",
       "description": "Photo de boxeurs du club Rahilou Cergy Boxe"
     },
@@ -325,7 +293,7 @@
       "id": "img-041",
       "filename": "image-41.jpeg",
       "path": "/images/boxers/image-41.jpeg",
-      "tags": ["club", "boxers"],
+      "tags": ["club", "MMA"],
       "alt": "Photo du club RCB - Image 41",
       "description": "Photo de boxeurs du club Rahilou Cergy Boxe"
     },
@@ -333,7 +301,7 @@
       "id": "img-042",
       "filename": "image-42.jpeg",
       "path": "/images/boxers/image-42.jpeg",
-      "tags": ["club", "boxers"],
+      "tags": ["club", "competition", "boxers"],
       "alt": "Photo du club RCB - Image 42",
       "description": "Photo de boxeurs du club Rahilou Cergy Boxe"
     },
@@ -341,7 +309,7 @@
       "id": "img-043",
       "filename": "image-43.jpeg",
       "path": "/images/boxers/image-43.jpeg",
-      "tags": ["club", "boxers"],
+      "tags": ["club", "competition", "boxers", "young"],
       "alt": "Photo du club RCB - Image 43",
       "description": "Photo de boxeurs du club Rahilou Cergy Boxe"
     },
@@ -349,7 +317,7 @@
       "id": "img-044",
       "filename": "image-44.jpeg",
       "path": "/images/boxers/image-44.jpeg",
-      "tags": ["club", "boxers"],
+      "tags": ["club", "competition", "boxers", "cup", "trophy", "girls"],
       "alt": "Photo du club RCB - Image 44",
       "description": "Photo de boxeurs du club Rahilou Cergy Boxe"
     },
@@ -357,7 +325,7 @@
       "id": "img-045",
       "filename": "image-45.jpeg",
       "path": "/images/boxers/image-45.jpeg",
-      "tags": ["club", "boxers"],
+      "tags": ["club", "competition", "boxers", "cup", "trophy", "girls"],
       "alt": "Photo du club RCB - Image 45",
       "description": "Photo de boxeurs du club Rahilou Cergy Boxe"
     },
@@ -365,7 +333,7 @@
       "id": "img-046",
       "filename": "image-46.jpeg",
       "path": "/images/boxers/image-46.jpeg",
-      "tags": ["club", "boxers"],
+      "tags": ["club", "competition", "boxers", "cup", "trophy", "girls"],
       "alt": "Photo du club RCB - Image 46",
       "description": "Photo de boxeurs du club Rahilou Cergy Boxe"
     },
@@ -373,7 +341,7 @@
       "id": "img-047",
       "filename": "image-47.jpeg",
       "path": "/images/boxers/image-47.jpeg",
-      "tags": ["club", "boxers"],
+      "tags": ["club", "boxers", "competition", "cup", "trophy"],
       "alt": "Photo du club RCB - Image 47",
       "description": "Photo de boxeurs du club Rahilou Cergy Boxe"
     },
@@ -381,7 +349,7 @@
       "id": "img-048",
       "filename": "image-48.jpeg",
       "path": "/images/boxers/image-48.jpeg",
-      "tags": ["club", "boxers"],
+      "tags": ["club", "competition", "boxers", "cup", "trophy"],
       "alt": "Photo du club RCB - Image 48",
       "description": "Photo de boxeurs du club Rahilou Cergy Boxe"
     },
@@ -397,7 +365,7 @@
       "id": "img-050",
       "filename": "image-50.jpeg",
       "path": "/images/boxers/image-50.jpeg",
-      "tags": ["club", "boxers"],
+      "tags": ["club", "competition", "boxers", "cup", "trophy"],
       "alt": "Photo du club RCB - Image 50",
       "description": "Photo de boxeurs du club Rahilou Cergy Boxe"
     },
