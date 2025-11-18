@@ -14,7 +14,9 @@ import { getImagesByTags } from "@lib/utils/imageGallery";
  * @param {string} props.className - Classes CSS supplémentaires
  * @param {boolean} props.showControls - Afficher les contrôles de navigation (défaut: true)
  * @param {boolean} props.showIndicators - Afficher les indicateurs de slide (défaut: true)
- * @param {string} props.objectPosition - Position de l'image (défaut: "center center")
+ * @param {string|Object} props.objectPosition - Position de l'image (défaut: "center center")
+ *   Peut être une string ("center center") ou un objet avec breakpoints:
+ *   { default: "center center", sm: "center top", md: "center center", lg: "left center" }
  */
 const Carousel = ({
   tags = [],
@@ -56,10 +58,11 @@ const Carousel = ({
     // Utiliser les images taguées si disponibles, sinon les images par défaut
     let images = [];
     if (taggedImages.length > 0) {
-      images = taggedImages.map((img) => ({
+      images = taggedImages.map((img, idx) => ({
         src: img.path,
         alt: img.alt || img.description,
         objectPosition: img.objectPosition || objectPosition, // Utiliser objectPosition du metadata ou la valeur par défaut
+        id: `carousel-img-${idx}-${img.path?.replace(/[^a-zA-Z0-9]/g, "-") || idx}`,
       }));
     } else {
       console.log(
@@ -67,15 +70,45 @@ const Carousel = ({
         defaultImages.length,
       );
       // Ajouter objectPosition aux images par défaut si elles n'en ont pas
-      images = defaultImages.map((img) => ({
+      images = defaultImages.map((img, idx) => ({
         ...img,
         objectPosition: img.objectPosition || objectPosition,
+        id: `carousel-img-default-${idx}-${img.src?.replace(/[^a-zA-Z0-9]/g, "-") || idx}`,
       }));
     }
 
     // Mélanger aléatoirement les images
     return shuffleArray(images);
   }, [tags, limit, defaultImages, objectPosition]);
+
+  // Générer le CSS pour les positions responsive
+  const responsiveStyles = useMemo(() => {
+    const breakpoints = {
+      sm: "640px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1280px",
+      "2xl": "1536px",
+    };
+
+    let css = "";
+
+    carouselImages.forEach((image) => {
+      const pos = image.objectPosition;
+      if (typeof pos === "object" && pos !== null) {
+        const defaultPos = pos.default || pos.base || "center center";
+        css += `.${image.id} { object-position: ${defaultPos}; }\n`;
+
+        Object.entries(breakpoints).forEach(([key, value]) => {
+          if (pos[key]) {
+            css += `@media (min-width: ${value}) { .${image.id} { object-position: ${pos[key]}; } }\n`;
+          }
+        });
+      }
+    });
+
+    return css;
+  }, [carouselImages]);
 
   // Auto-rotation du carousel (auto-play)
   useEffect(() => {
@@ -108,40 +141,68 @@ const Carousel = ({
     return null;
   }
 
+  // Obtenir la position par défaut pour les images avec objectPosition string
+  const getDefaultPosition = (pos) => {
+    if (typeof pos === "string") {
+      return pos;
+    }
+    if (typeof pos === "object" && pos !== null) {
+      return pos.default || pos.base || "center center";
+    }
+    return "center center";
+  };
+
   return (
     <div className={`${className} overflow-hidden`}>
+      {/* Injecter les styles CSS responsive si nécessaire */}
+      {responsiveStyles && (
+        <style dangerouslySetInnerHTML={{ __html: responsiveStyles }} />
+      )}
       {/* Carousel Background - conteneur avec position relative pour fill */}
       <div className="relative w-full h-full">
-        {carouselImages.map((image, index) => (
-          <div
-            key={`carousel-${index}-${image.src}`}
-            className={`absolute inset-0 transition-opacity duration-1000 ${
-              index === currentSlide ? "opacity-100" : "opacity-0"
-            }`}
-            style={{ zIndex: index === currentSlide ? 1 : 0 }}
-          >
-            <Image
-              src={image.src}
-              alt={image.alt}
-              fill
-              className="object-cover"
-              style={{ objectPosition: image.objectPosition || objectPosition }}
-              priority={index === 0}
-              sizes="100vw"
-              onError={(e) => {
-                console.error("Erreur de chargement de l'image:", image.src, e);
-              }}
-              onLoad={() => {
-                console.log("Image chargée avec succès:", image.src);
-              }}
-            />
-            {/* Overlay sombre pour améliorer la lisibilité du texte */}
+        {carouselImages.map((image, index) => {
+          const isResponsive =
+            typeof image.objectPosition === "object" &&
+            image.objectPosition !== null;
+          const defaultPos = getDefaultPosition(
+            image.objectPosition || objectPosition,
+          );
+
+          return (
             <div
-              className="absolute inset-0 bg-black bg-opacity-40"
-              style={{ zIndex: 2 }}
-            />
-          </div>
-        ))}
+              key={`carousel-${index}-${image.src}`}
+              className={`absolute inset-0 transition-opacity duration-1000 ${
+                index === currentSlide ? "opacity-100" : "opacity-0"
+              }`}
+              style={{ zIndex: index === currentSlide ? 1 : 0 }}
+            >
+              <Image
+                src={image.src}
+                alt={image.alt}
+                fill
+                className={`object-cover ${isResponsive ? image.id : ""}`}
+                style={!isResponsive ? { objectPosition: defaultPos } : {}}
+                priority={index === 0}
+                sizes="100vw"
+                onError={(e) => {
+                  console.error(
+                    "Erreur de chargement de l'image:",
+                    image.src,
+                    e,
+                  );
+                }}
+                onLoad={() => {
+                  console.log("Image chargée avec succès:", image.src);
+                }}
+              />
+              {/* Overlay sombre pour améliorer la lisibilité du texte */}
+              <div
+                className="absolute inset-0 bg-black bg-opacity-40"
+                style={{ zIndex: 2 }}
+              />
+            </div>
+          );
+        })}
       </div>
 
       {/* Contrôles du carousel */}

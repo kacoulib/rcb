@@ -95,7 +95,12 @@
       "path": "/images/boxers/image-14.jpeg",
       "tags": ["girls", "boxers", "competition", "cup", "trophy"],
       "alt": "Photo du club RCB - Image 14",
-      "description": "Photo de boxeurs du club Rahilou Cergy Boxe"
+      "description": "Photo de boxeurs du club Rahilou Cergy Boxe",
+      "objectPosition": {
+        "default": "left center",
+        "sm": "center top",
+        "md": "center center"
+      }
     },
     {
       "id": "img-015",
@@ -119,7 +124,10 @@
       "path": "/images/boxers/image-17.jpeg",
       "tags": ["combat", "boxers", "competition"],
       "alt": "Photo du club RCB - Image 17",
-      "description": "Photo de boxeurs du club Rahilou Cergy Boxe"
+      "description": "Photo de boxeurs du club Rahilou Cergy Boxe",
+      "objectPosition": {
+        "sm": "65% center"
+      }
     },
     {
       "id": "img-018",
