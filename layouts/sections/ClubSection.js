@@ -1,35 +1,97 @@
 "use client";
 
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-
-const galleryImages = [
-  {
-    src: "/images/blog-1.jpg",
-    alt: "Entraînement au sac de frappe dans la salle du club",
-  },
-  {
-    src: "/images/blog-2.jpg",
-    alt: "Séance de sparring encadrée sur le ring",
-  },
-  {
-    src: "/images/blog-3.jpg",
-    alt: "Groupe de boxeurs réunis pour un briefing technique",
-  },
-  {
-    src: "/images/blog-4.jpg",
-    alt: "Atelier de renforcement musculaire pendant un stage",
-  },
-  {
-    src: "/images/blog-5.jpg",
-    alt: "Public venu soutenir le club lors d'un gala",
-  },
-  {
-    src: "/images/blog-6.jpg",
-    alt: "Remise de médailles après une compétition régionale",
-  },
-];
+import { getAllImages } from "@lib/utils/imageGallery";
 
 const ClubSection = () => {
+  const [galleryImages, setGalleryImages] = useState([]);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  // Fonction pour mélanger aléatoirement un tableau (Fisher-Yates shuffle)
+  const shuffleArray = (array) => {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  };
+
+  // Charger les images du metadata (9 images aléatoires pour une grille 3x3 parfaite)
+  useEffect(() => {
+    try {
+      // Récupérer toutes les images disponibles
+      const allImages = getAllImages();
+      // Mélanger aléatoirement
+      const shuffledImages = shuffleArray(allImages);
+      // Prendre 10 images (la dernière prendra toute la largeur si seule)
+      const selectedImages = shuffledImages.slice(0, 10);
+      const formattedImages = selectedImages.map((img) => ({
+        src: img.path,
+        alt: img.alt || img.description || "Image du club Rahilou Cergy Boxe",
+      }));
+      setGalleryImages(formattedImages);
+    } catch (error) {
+      console.warn("Erreur lors du chargement des images:", error);
+      // Images de fallback si erreur
+      setGalleryImages([
+        {
+          src: "/images/blog-1.jpg",
+          alt: "Entraînement au sac de frappe dans la salle du club",
+        },
+        {
+          src: "/images/blog-2.jpg",
+          alt: "Séance de sparring encadrée sur le ring",
+        },
+        {
+          src: "/images/blog-3.jpg",
+          alt: "Groupe de boxeurs réunis pour un briefing technique",
+        },
+        {
+          src: "/images/blog-4.jpg",
+          alt: "Atelier de renforcement musculaire pendant un stage",
+        },
+        {
+          src: "/images/blog-5.jpg",
+          alt: "Public venu soutenir le club lors d'un gala",
+        },
+        {
+          src: "/images/blog-6.jpg",
+          alt: "Remise de médailles après une compétition régionale",
+        },
+      ]);
+    }
+  }, []);
+
+  // Intersection Observer pour détecter quand la section est visible
+  useEffect(() => {
+    const currentRef = sectionRef.current;
+    if (!currentRef) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+            // Une fois visible, on peut arrêter d'observer
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        rootMargin: "200px", // Commencer à charger 200px avant que la section soit visible
+        threshold: 0.1,
+      },
+    );
+
+    observer.observe(currentRef);
+
+    return () => {
+      observer.unobserve(currentRef);
+    };
+  }, []);
   return (
     <section id="club" className="bg-white py-16 sm:py-20">
       <div className="container mx-auto max-w-6xl px-4">
@@ -74,8 +136,9 @@ const ClubSection = () => {
             </p>
 
             <p className="text-lg leading-relaxed">
-              Que tu sois néophyte ou expérimenté, n&apos;hésites pas à te joindre au RCB.
-              Nous proposons de la boxe éducative, loisir et compétiteur pour tous niveaux.
+              Que tu sois néophyte ou expérimenté, n&apos;hésites pas à te
+              joindre au RCB. Nous proposons de la boxe éducative, loisir et
+              compétiteur pour tous niveaux.
             </p>
           </div>
         </div>
@@ -129,7 +192,7 @@ const ClubSection = () => {
         </div>
 
         {/* Gallery */}
-        <div>
+        <div ref={sectionRef}>
           <div className="mb-12 text-center">
             <h3 className="text-2xl font-semibold text-dark">En images</h3>
             <p className="mt-4 text-base text-slate-600">
@@ -137,22 +200,45 @@ const ClubSection = () => {
               partagés avec nos membres.
             </p>
           </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {galleryImages.map((image) => (
-              <figure
-                key={image.src}
-                className="group relative overflow-hidden rounded-xl border border-slate-200 bg-slate-100 shadow-sm"
-              >
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  width={400}
-                  height={260}
-                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                />
-              </figure>
-            ))}
-          </div>
+          {isVisible && galleryImages.length > 0 ? (
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {galleryImages.map((image, index) => {
+                const isLast = index === galleryImages.length - 1;
+                const isAloneOnLastRow =
+                  galleryImages.length % 3 === 1 && isLast;
+
+                return (
+                  <figure
+                    key={`${image.src}-${index}`}
+                    className={`group relative overflow-hidden rounded-xl border border-slate-200 bg-slate-100 shadow-sm ${
+                      isAloneOnLastRow ? "sm:col-span-2 lg:col-span-3" : ""
+                    }`}
+                  >
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      width={400}
+                      height={260}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                  </figure>
+                );
+              })}
+            </div>
+          ) : (
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {/* Placeholders pendant le chargement */}
+              {Array.from({ length: 6 }).map((_, index) => (
+                <div
+                  key={`placeholder-${index}`}
+                  className="relative overflow-hidden rounded-xl border border-slate-200 bg-slate-100 aspect-[400/260] animate-pulse"
+                >
+                  <div className="absolute inset-0 bg-slate-200" />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </section>
