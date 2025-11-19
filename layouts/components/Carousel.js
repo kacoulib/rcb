@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import Image from "next/image";
 import { getImagesByTags } from "@lib/utils/imageGallery";
 
@@ -29,6 +29,12 @@ const Carousel = ({
   objectPosition = "center center",
 }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [showSwipeHint, setShowSwipeHint] = useState(true);
+  const touchStartX = useRef(0);
+  const touchStartY = useRef(0);
+  const touchEndX = useRef(0);
+  const touchEndY = useRef(0);
+  const carouselRef = useRef(null);
 
   // Fonction pour mélanger aléatoirement un tableau (Fisher-Yates shuffle)
   const shuffleArray = (array) => {
@@ -121,6 +127,35 @@ const Carousel = ({
     return () => clearInterval(interval);
   }, [carouselImages.length, autoRotateInterval]);
 
+  // Masquer l'indicateur de swipe après la première interaction
+  useEffect(() => {
+    const handleFirstInteraction = () => {
+      setShowSwipeHint(false);
+    };
+
+    const carousel = carouselRef.current;
+    if (carousel) {
+      carousel.addEventListener("touchstart", handleFirstInteraction, { once: true });
+      carousel.addEventListener("click", handleFirstInteraction, { once: true });
+    }
+
+    return () => {
+      if (carousel) {
+        carousel.removeEventListener("touchstart", handleFirstInteraction);
+        carousel.removeEventListener("click", handleFirstInteraction);
+      }
+    };
+  }, []);
+
+  // Masquer l'indicateur après 5 secondes
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowSwipeHint(false);
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   const goToSlide = (index) => {
     setCurrentSlide(index);
   };
@@ -133,6 +168,43 @@ const Carousel = ({
 
   const goToNext = () => {
     setCurrentSlide((prev) => (prev + 1) % carouselImages.length);
+  };
+
+  // Gestion des gestes tactiles (swipe)
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+  };
+
+  const handleTouchMove = (e) => {
+    touchEndX.current = e.touches[0].clientX;
+    touchEndY.current = e.touches[0].clientY;
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+
+    const distanceX = touchStartX.current - touchEndX.current;
+    const distanceY = touchStartY.current - touchEndY.current;
+    const minSwipeDistance = 50; // Distance minimale pour déclencher un swipe
+
+    // Ne déclencher le swipe que si le mouvement horizontal est plus important que le vertical
+    // Cela évite les conflits avec le scroll vertical
+    if (Math.abs(distanceX) > Math.abs(distanceY) && Math.abs(distanceX) > minSwipeDistance) {
+      if (distanceX > 0) {
+        // Swipe vers la gauche = image suivante
+        goToNext();
+      } else {
+        // Swipe vers la droite = image précédente
+        goToPrevious();
+      }
+    }
+
+    // Réinitialiser les valeurs
+    touchStartX.current = 0;
+    touchStartY.current = 0;
+    touchEndX.current = 0;
+    touchEndY.current = 0;
   };
 
   // Toujours afficher le carousel si on a des images par défaut ou taguées
@@ -153,11 +225,33 @@ const Carousel = ({
   };
 
   return (
-    <div className={`${className} overflow-hidden`}>
+    <div
+      ref={carouselRef}
+      className={`${className} overflow-hidden touch-pan-y`}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
       {/* Injecter les styles CSS responsive si nécessaire */}
       {responsiveStyles && (
         <style dangerouslySetInnerHTML={{ __html: responsiveStyles }} />
       )}
+      {/* Styles pour l'animation de bounce horizontal */}
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          @keyframes bounce-x {
+            0%, 100% {
+              transform: translateX(0);
+            }
+            50% {
+              transform: translateX(-8px);
+            }
+          }
+          .animate-bounce-x {
+            animation: bounce-x 1.5s ease-in-out infinite;
+          }
+        `
+      }} />
       {/* Carousel Background - conteneur avec position relative pour fill */}
       <div className="relative w-full h-full">
         {carouselImages.map((image, index) => {
@@ -265,6 +359,51 @@ const Carousel = ({
               />
             </svg>
           </button>
+        </>
+      )}
+
+      {/* Indicateurs visuels de swipe pour mobile */}
+      {showSwipeHint && carouselImages.length > 1 && (
+        <>
+          {/* Flèche gauche animée */}
+          <div className="absolute left-4 top-1/2 z-30 -translate-y-1/2 pointer-events-none md:hidden">
+            <div className="flex items-center gap-2 rounded-full bg-white/30 backdrop-blur-sm px-4 py-2 animate-pulse">
+              <svg
+                className="h-6 w-6 text-white animate-bounce-x"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2.5}
+                  d="M15 19l-7-7 7-7"
+                />
+              </svg>
+              <span className="text-xs font-medium text-white">Glisser</span>
+            </div>
+          </div>
+
+          {/* Flèche droite animée */}
+          <div className="absolute right-4 top-1/2 z-30 -translate-y-1/2 pointer-events-none md:hidden">
+            <div className="flex items-center gap-2 rounded-full bg-white/30 backdrop-blur-sm px-4 py-2 animate-pulse">
+              <span className="text-xs font-medium text-white">Glisser</span>
+              <svg
+                className="h-6 w-6 text-white animate-bounce-x"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2.5}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </div>
+          </div>
         </>
       )}
     </div>
