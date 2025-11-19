@@ -7,11 +7,11 @@ const EnfantPage = () => {
   return (
     <main className="bg-white text-dark">
       {/* Hero Section avec carousel enfant */}
-      <section className="relative h-[60vh] min-h-[400px] overflow-hidden">
+      <section className="relative h-[calc(100vh-100px)] overflow-hidden pt-20 md:pt-24">
         <Carousel
           tags={["young"]}
           limit={8}
-          className="absolute inset-0"
+          className="absolute inset-0 z-0"
           showControls={true}
           showIndicators={true}
         />
