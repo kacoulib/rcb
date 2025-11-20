@@ -107,57 +107,6 @@ const GalaPage = () => {
         </div>
       </section>
 
-      {/* Gallery Section */}
-      <section className="py-16">
-        <div className="container mx-auto max-w-6xl px-4">
-          <div className="mb-12 text-center">
-            <h2 className="text-3xl font-semibold text-dark">
-              Galas précédents
-            </h2>
-            <p className="mt-4 text-base text-slate-600">
-              Revivez les moments forts de nos événements
-            </p>
-          </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              {
-                src: "/images/blog-5.jpg",
-                alt: "Public venu soutenir le club lors d&apos;un gala",
-                title: "Gala 2023",
-              },
-              {
-                src: "/images/blog-6.jpg",
-                alt: "Remise de médailles après une compétition régionale",
-                title: "Remise de médailles",
-              },
-              {
-                src: "/images/blog-1.jpg",
-                alt: "Préparation avant un gala",
-                title: "Préparation",
-              },
-            ].map((image, index) => (
-              <figure
-                key={index}
-                className="group relative overflow-hidden rounded-xl border border-slate-200 bg-slate-100 shadow-sm"
-              >
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  width={400}
-                  height={260}
-                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <p className="font-semibold">{image.title}</p>
-                  </div>
-                </div>
-              </figure>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section className="bg-primary py-16 text-white">
         <div className="container mx-auto max-w-4xl px-4 text-center">

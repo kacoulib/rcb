@@ -22,8 +22,8 @@ const EnfantPage = () => {
             </h1>
             <p className="text-xl leading-relaxed">
               La boxe éducative assaut est une forme de pratique ouverte à
-              toutes et à tous. C&apos;est une pratique sans danger,
-              puisqu&apos;elle exige de ne pas nuire à son adversaire.
+              toutes et à tous. C'est une pratique sans danger,
+              puisqu'elle exige de ne pas nuire à son adversaire.
             </p>
           </div>
         </div>
@@ -36,16 +36,16 @@ const EnfantPage = () => {
             <div className="prose prose-lg max-w-none">
               <p className="text-lg leading-relaxed">
                 La boxe éducative assaut est une forme de pratique ouverte à
-                toutes et à tous. C&apos;est une pratique sans danger,
-                puisqu&apos;elle exige de ne pas nuire à son adversaire par un
+                toutes et à tous. C'est une pratique sans danger,
+                puisqu'elle exige de ne pas nuire à son adversaire par un
                 comportement violent sous peine de sanctions : le boxeur doit
-                toucher et ne pas provoquer de douleur à l&apos;adversaire.
+                toucher et ne pas provoquer de douleur à l'adversaire.
               </p>
 
               <p className="text-lg leading-relaxed">
                 La pratique éducative est ludique et permet à chacun de
                 développer des compétences technico-tactique en toute sécurité
-                (veille de l&apos;intégrité physique et psychologique).
+                (veille de l'intégrité physique et psychologique).
               </p>
 
               <div className="my-8 rounded-lg border-l-4 border-primary bg-primary/5 p-6">
@@ -53,15 +53,15 @@ const EnfantPage = () => {
                   Notre approche pédagogique
                 </h3>
                 <p className="text-base leading-relaxed mb-4">
-                  Au RCB, l&apos;éducation est prioritaire, permettant au plus
+                  Au RCB, l'éducation est prioritaire, permettant au plus
                   jeune de développer leur coordination et leur motricité. À
                   noter que la compétition est secondaire dans notre politique
-                  d&apos;apprentissage et d&apos;enseignement. La formation
-                  étant prioritaire dans la recherche d&apos;évolution en toute
+                  d'apprentissage et d'enseignement. La formation
+                  étant prioritaire dans la recherche d'évolution en toute
                   sécurité.
                 </p>
                 <p className="text-base leading-relaxed">
-                  La compétition et l&apos;évaluation de la progression
+                  La compétition et l'évaluation de la progression
                   technique sont en effet uniquement proposées à partir des
                   Benjamins ayant validé un certain nombre de compétences.
                 </p>
@@ -87,19 +87,19 @@ const EnfantPage = () => {
               {
                 title: "Développement moteur",
                 description:
-                  "Amélioration de la coordination, de l&apos;équilibre et de la motricité globale",
+                  "Amélioration de la coordination, de l'équilibre et de la motricité globale",
                 icon: "🏃",
               },
               {
                 title: "Confiance en soi",
                 description:
-                  "Renforcement de l&apos;estime de soi et de la capacité à se dépasser",
+                  "Renforcement de l'estime de soi et de la capacité à se dépasser",
                 icon: "✨",
               },
               {
                 title: "Respect et discipline",
                 description:
-                  "Apprentissage du respect de l&apos;autre, des règles et de la discipline",
+                  "Apprentissage du respect de l'autre, des règles et de la discipline",
                 icon: "🤝",
               },
               {
@@ -111,7 +111,7 @@ const EnfantPage = () => {
               {
                 title: "Socialisation",
                 description:
-                  "Rencontre avec d&apos;autres enfants et développement de l&apos;esprit d&apos;équipe",
+                  "Rencontre avec d'autres enfants et développement de l'esprit d'équipe",
                 icon: "👥",
               },
               {
@@ -141,7 +141,7 @@ const EnfantPage = () => {
         <div className="container mx-auto max-w-6xl px-4">
           <div className="mb-12 text-center">
             <h2 className="text-3xl font-semibold text-dark">
-              Par tranches d&apos;âge
+              Par tranches d'âge
             </h2>
             <p className="mt-4 text-base text-slate-600">
               Des cours adaptés à chaque niveau et à chaque âge
@@ -165,7 +165,7 @@ const EnfantPage = () => {
                 age: "11-12 ans",
                 title: "Benjamins",
                 description:
-                  "Perfectionnement technique avec possibilité d&apos;évaluation et de compétition",
+                  "Perfectionnement technique avec possibilité d'évaluation et de compétition",
               },
               {
                 age: "13-15 ans",
