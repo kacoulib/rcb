@@ -3,6 +3,9 @@
 import { useState, useEffect, useMemo, useRef } from "react";
 import Image from "next/image";
 import { getImagesByTags } from "@lib/utils/imageGallery";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation, Pagination } from "swiper";
+import "swiper/swiper.min.css";
 
 /**
  * Composant Carousel réutilisable avec tags personnalisables
@@ -28,12 +31,9 @@ const Carousel = ({
   showIndicators = true,
   objectPosition = "center center",
 }) => {
-  const [currentSlide, setCurrentSlide] = useState(0);
   const [showSwipeHint, setShowSwipeHint] = useState(true);
-  const touchStartX = useRef(0);
-  const touchStartY = useRef(0);
-  const touchEndX = useRef(0);
-  const touchEndY = useRef(0);
+  const [swiperInstance, setSwiperInstance] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(0);
   const carouselRef = useRef(null);
 
   // Fonction pour mélanger aléatoirement un tableau (Fisher-Yates shuffle)
@@ -116,17 +116,6 @@ const Carousel = ({
     return css;
   }, [carouselImages]);
 
-  // Auto-rotation du carousel (auto-play)
-  useEffect(() => {
-    if (carouselImages.length <= 1) return;
-
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % carouselImages.length);
-    }, autoRotateInterval);
-
-    return () => clearInterval(interval);
-  }, [carouselImages.length, autoRotateInterval]);
-
   // Masquer l'indicateur de swipe après la première interaction
   useEffect(() => {
     const handleFirstInteraction = () => {
@@ -135,8 +124,12 @@ const Carousel = ({
 
     const carousel = carouselRef.current;
     if (carousel) {
-      carousel.addEventListener("touchstart", handleFirstInteraction, { once: true });
-      carousel.addEventListener("click", handleFirstInteraction, { once: true });
+      carousel.addEventListener("touchstart", handleFirstInteraction, {
+        once: true,
+      });
+      carousel.addEventListener("click", handleFirstInteraction, {
+        once: true,
+      });
     }
 
     return () => {
@@ -156,55 +149,30 @@ const Carousel = ({
     return () => clearTimeout(timer);
   }, []);
 
+  // Mettre à jour Swiper quand les images changent
+  useEffect(() => {
+    if (swiperInstance && carouselImages.length > 0) {
+      swiperInstance.update();
+      swiperInstance.updateSlides();
+    }
+  }, [carouselImages, swiperInstance]);
+
   const goToSlide = (index) => {
-    setCurrentSlide(index);
+    if (swiperInstance) {
+      swiperInstance.slideTo(index);
+    }
   };
 
   const goToPrevious = () => {
-    setCurrentSlide(
-      (prev) => (prev - 1 + carouselImages.length) % carouselImages.length,
-    );
+    if (swiperInstance) {
+      swiperInstance.slidePrev();
+    }
   };
 
   const goToNext = () => {
-    setCurrentSlide((prev) => (prev + 1) % carouselImages.length);
-  };
-
-  // Gestion des gestes tactiles (swipe)
-  const handleTouchStart = (e) => {
-    touchStartX.current = e.touches[0].clientX;
-    touchStartY.current = e.touches[0].clientY;
-  };
-
-  const handleTouchMove = (e) => {
-    touchEndX.current = e.touches[0].clientX;
-    touchEndY.current = e.touches[0].clientY;
-  };
-
-  const handleTouchEnd = () => {
-    if (!touchStartX.current || !touchEndX.current) return;
-
-    const distanceX = touchStartX.current - touchEndX.current;
-    const distanceY = touchStartY.current - touchEndY.current;
-    const minSwipeDistance = 50; // Distance minimale pour déclencher un swipe
-
-    // Ne déclencher le swipe que si le mouvement horizontal est plus important que le vertical
-    // Cela évite les conflits avec le scroll vertical
-    if (Math.abs(distanceX) > Math.abs(distanceY) && Math.abs(distanceX) > minSwipeDistance) {
-      if (distanceX > 0) {
-        // Swipe vers la gauche = image suivante
-        goToNext();
-      } else {
-        // Swipe vers la droite = image précédente
-        goToPrevious();
-      }
+    if (swiperInstance) {
+      swiperInstance.slideNext();
     }
-
-    // Réinitialiser les valeurs
-    touchStartX.current = 0;
-    touchStartY.current = 0;
-    touchEndX.current = 0;
-    touchEndY.current = 0;
   };
 
   // Toujours afficher le carousel si on a des images par défaut ou taguées
@@ -227,18 +195,17 @@ const Carousel = ({
   return (
     <div
       ref={carouselRef}
-      className={`${className} overflow-hidden touch-pan-y`}
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
+      className={`${className} overflow-hidden`}
+      style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}
     >
       {/* Injecter les styles CSS responsive si nécessaire */}
       {responsiveStyles && (
         <style dangerouslySetInnerHTML={{ __html: responsiveStyles }} />
       )}
       {/* Styles pour l'animation de bounce horizontal */}
-      <style dangerouslySetInnerHTML={{
-        __html: `
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
           @keyframes bounce-x {
             0%, 100% {
               transform: translateX(0);
@@ -250,10 +217,55 @@ const Carousel = ({
           .animate-bounce-x {
             animation: bounce-x 1.5s ease-in-out infinite;
           }
-        `
-      }} />
-      {/* Carousel Background - conteneur avec position relative pour fill */}
-      <div className="relative w-full h-full">
+          .carousel-swiper {
+            width: 100% !important;
+            height: 100% !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+          }
+          .carousel-swiper .swiper-wrapper {
+            height: 100% !important;
+          }
+          .carousel-swiper .swiper-slide {
+            position: relative !important;
+            width: 100% !important;
+            height: 100% !important;
+          }
+        `,
+        }}
+      />
+      {/* Swiper Carousel */}
+      <Swiper
+        modules={[Autoplay, Navigation, Pagination]}
+        spaceBetween={0}
+        slidesPerView={1}
+        autoplay={
+          carouselImages.length > 1
+            ? {
+                delay: autoRotateInterval,
+                disableOnInteraction: false,
+              }
+            : false
+        }
+        loop={carouselImages.length > 1}
+        navigation={false}
+        pagination={false}
+        className="carousel-swiper"
+        style={{ width: "100%", height: "100%" }}
+        onSwiper={(swiper) => {
+          setSwiperInstance(swiper);
+          // Forcer la mise à jour de la hauteur après l'initialisation
+          if (swiper) {
+            swiper.update();
+          }
+        }}
+        onSlideChange={(swiper) => {
+          setActiveIndex(swiper.realIndex);
+        }}
+      >
         {carouselImages.map((image, index) => {
           const isResponsive =
             typeof image.objectPosition === "object" &&
@@ -263,13 +275,7 @@ const Carousel = ({
           );
 
           return (
-            <div
-              key={`carousel-${index}-${image.src}`}
-              className={`absolute inset-0 transition-opacity duration-1000 ${
-                index === currentSlide ? "opacity-100" : "opacity-0"
-              }`}
-              style={{ zIndex: index === currentSlide ? 1 : 0 }}
-            >
+            <SwiperSlide key={`carousel-${index}-${image.src}`}>
               <Image
                 src={image.src}
                 alt={image.alt}
@@ -294,36 +300,44 @@ const Carousel = ({
                 className="absolute inset-0 bg-black bg-opacity-40"
                 style={{ zIndex: 2 }}
               />
-            </div>
+            </SwiperSlide>
           );
         })}
-      </div>
+      </Swiper>
 
       {/* Contrôles du carousel */}
       {showIndicators && carouselImages.length > 1 && (
         <div className="absolute bottom-6 left-1/2 z-20 flex -translate-x-1/2 gap-2">
-          {carouselImages.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => goToSlide(index)}
-              className={`h-3 w-3 rounded-full transition-all duration-300 ${
-                index === currentSlide
-                  ? "scale-125 bg-white"
-                  : "bg-white/50 hover:bg-white/75"
-              }`}
-              aria-label={`Aller à l'image ${index + 1}`}
-            />
-          ))}
+          {carouselImages.map((_, index) => {
+            const isActive = activeIndex === index;
+            return (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                className={`h-3 w-3 rounded-full transition-all duration-300 ${
+                  isActive
+                    ? "scale-125 bg-white"
+                    : "bg-white/50 hover:bg-white/75"
+                }`}
+                aria-label={`Aller à l'image ${index + 1}`}
+              />
+            );
+          })}
         </div>
       )}
 
       {/* Boutons de navigation */}
-      {showControls && carouselImages.length > 1 && (
+      {showControls && carouselImages.length > 1 && swiperInstance && (
         <>
           <button
-            onClick={goToPrevious}
-            className="absolute left-2 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/20 p-2 sm:p-3 text-white transition-all duration-300 hover:bg-white/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white touch-manipulation"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              goToPrevious();
+            }}
+            className="absolute left-2 top-1/2 z-30 -translate-y-1/2 rounded-full bg-white/20 p-2 sm:p-3 text-white transition-all duration-300 hover:bg-white/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white touch-manipulation cursor-pointer"
             aria-label="Image précédente"
+            type="button"
           >
             <svg
               className="h-5 w-5 sm:h-6 sm:w-6"
@@ -341,9 +355,14 @@ const Carousel = ({
           </button>
 
           <button
-            onClick={goToNext}
-            className="absolute right-2 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/20 p-2 sm:p-3 text-white transition-all duration-300 hover:bg-white/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white touch-manipulation"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              goToNext();
+            }}
+            className="absolute right-2 top-1/2 z-30 -translate-y-1/2 rounded-full bg-white/20 p-2 sm:p-3 text-white transition-all duration-300 hover:bg-white/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white touch-manipulation cursor-pointer"
             aria-label="Image suivante"
+            type="button"
           >
             <svg
               className="h-5 w-5 sm:h-6 sm:w-6"

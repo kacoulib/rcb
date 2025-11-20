@@ -211,7 +211,7 @@ const ClubSection = () => {
                   <figure
                     key={`${image.src}-${index}`}
                     className={`group relative overflow-hidden rounded-xl border border-slate-200 bg-slate-100 shadow-sm ${
-                      isAloneOnLastRow ? "sm:col-span-2 lg:col-span-3" : ""
+                      isAloneOnLastRow ? "lg:col-start-2" : ""
                     }`}
                   >
                     <Image
