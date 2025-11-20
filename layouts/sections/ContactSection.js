@@ -43,34 +43,6 @@ const ContactSection = () => {
               Venez nous rencontrer au Gymnase des Chênes pour finaliser votre
               inscription. Séance d&apos;essai gratuite disponible.
             </p>
-
-            {/* Bouton PDF optionnel */}
-            <a
-              href="#"
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-8 py-3 font-semibold text-white transition hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-              onClick={(e) => {
-                e.preventDefault();
-                // TODO: Remplacer par le vrai lien PDF quand disponible
-                alert(
-                  "Le dossier d'inscription sera bientôt disponible. Contactez-nous directement pour plus d'informations.",
-                );
-              }}
-            >
-              <svg
-                className="h-5 w-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
-                />
-              </svg>
-              Télécharger le dossier d&apos;inscription (PDF)
-            </a>
           </div>
 
           {/* Infos gymnase */}
