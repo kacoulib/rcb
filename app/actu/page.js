@@ -1,6 +1,20 @@
-export const metadata = {
-  title: "Actualités",
-};
+import { generateSeoMetadata } from "@lib/utils/seo";
+
+export async function generateMetadata() {
+  return generateSeoMetadata({
+    title: "Actualités",
+    description:
+      "Retrouvez les dernières actualités du RCB95 - Rahilou Cergy Boxe. Nouvelles du club, événements, résultats de compétitions et informations importantes pour tous les membres.",
+    keywords: [
+      "actualités boxe",
+      "nouvelles RCB95",
+      "événements club boxe",
+      "résultats compétition",
+      "news boxe Cergy",
+    ],
+    path: "/actu",
+  });
+}
 
 const ActuPage = () => {
   return (

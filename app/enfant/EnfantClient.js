@@ -1,28 +1,10 @@
-import { generateSeoMetadata } from "@lib/utils/seo";
-import EnfantClient from "./EnfantClient";
+"use client";
 
-export async function generateMetadata() {
-  return generateSeoMetadata({
-    title: "Boxe Éducative Assaut (BEA) - Enfants",
-    description:
-      "Boxe éducative assaut pour enfants au RCB95 - Rahilou Cergy Boxe. Pratique sécurisée et ludique pour développer la motricité, la confiance en soi et le respect. Cours adaptés par tranches d'âge de 6 à 15 ans.",
-    keywords: [
-      "boxe enfants",
-      "boxe éducative",
-      "BEA boxe",
-      "boxe jeunes",
-      "initiation boxe enfants",
-      "cours boxe enfants Cergy",
-      "boxe poussins",
-      "boxe benjamins",
-    ],
-    path: "/enfant",
-  });
-}
+import Image from "next/image";
+import Carousel from "@layouts/components/Carousel";
 
-export default function EnfantPage() {
-  return <EnfantClient />;
-}
+const EnfantClient = () => {
+  return (
     <main className="bg-white text-dark">
       {/* Hero Section avec carousel enfant */}
       <section className="relative h-[calc(100vh-100px)] overflow-hidden pt-20 md:pt-24">
@@ -232,4 +214,5 @@ export default function EnfantPage() {
   );
 };
 
-export default EnfantPage;
+export default EnfantClient;
+

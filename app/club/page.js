@@ -1,8 +1,22 @@
 import Image from "next/image";
+import { generateSeoMetadata } from "@lib/utils/seo";
 
-export const metadata = {
-  title: "Le club",
-};
+export async function generateMetadata() {
+  return generateSeoMetadata({
+    title: "Le club",
+    description:
+      "Découvrez le RCB95 - Rahilou Cergy Boxe, club de boxe anglaise à Cergy et Éragny. Nos entraîneurs diplômés, nos installations et notre philosophie d'encadrement bienveillant pour tous les niveaux.",
+    keywords: [
+      "club boxe Cergy",
+      "entraîneurs boxe",
+      "installations boxe",
+      "gymnase boxe",
+      "histoire club boxe",
+      "équipe RCB95",
+    ],
+    path: "/club",
+  });
+}
 
 const coaches = [
   {

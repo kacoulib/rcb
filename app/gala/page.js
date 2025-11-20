@@ -1,11 +1,62 @@
-"use client";
-
 import Image from "next/image";
 import Carousel from "@layouts/components/Carousel";
+import config from "@config/config.json";
+import { generateSeoMetadata, getFullBaseUrl } from "@lib/utils/seo";
+
+export async function generateMetadata() {
+  return generateSeoMetadata({
+    title: "Gala & Événements",
+    description:
+      "Découvrez les galas de boxe et événements organisés par le RCB. Galas amateurs, événements caritatifs, stages et rencontres interclubs. Participez aux prochains événements du club de boxe de Cergy.",
+    keywords: [
+      "gala boxe",
+      "événements boxe",
+      "galas boxe amateur",
+      "boxe Cergy",
+      "événements sportifs",
+      "combats boxe",
+      "rencontres interclubs",
+      "stages boxe",
+    ],
+    path: "/gala",
+  });
+}
 
 const GalaPage = () => {
+  const fullBaseUrl = getFullBaseUrl();
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "SportsEvent",
+    name: "Gala & Événements RCB95",
+    description:
+      "Galas de boxe et événements organisés par le Rahilou Cergy Boxe. Galas amateurs, événements caritatifs, stages et rencontres interclubs.",
+    organizer: {
+      "@type": "SportsOrganization",
+      name: "RCB95 - Rahilou Cergy Boxe",
+      url: fullBaseUrl,
+    },
+    sport: "Boxe anglaise",
+    eventStatus: "https://schema.org/EventScheduled",
+    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+    location: {
+      "@type": "Place",
+      name: "Cergy",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Cergy",
+        addressCountry: "FR",
+      },
+    },
+  };
+
   return (
     <main className="bg-white text-dark">
+      {/* Structured Data for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       {/* Hero Section avec carousel gala */}
       <section className="relative h-[calc(100vh-100px)] overflow-hidden pt-20 md:pt-24">
         <Carousel
@@ -29,7 +80,7 @@ const GalaPage = () => {
       </section>
 
       {/* Main Content */}
-      <section className="py-16">
+      <article className="py-16">
         <div className="container mx-auto max-w-5xl px-4">
           <div className="space-y-8 text-slate-700">
             <div className="prose prose-lg max-w-none">
@@ -50,13 +101,19 @@ const GalaPage = () => {
             </div>
           </div>
         </div>
-      </section>
+      </article>
 
       {/* Event Types Section */}
-      <section className="bg-slate-50 py-16">
+      <section
+        aria-labelledby="event-types-heading"
+        className="bg-slate-50 py-16"
+      >
         <div className="container mx-auto max-w-6xl px-4">
           <div className="mb-12 text-center">
-            <h2 className="text-3xl font-semibold text-dark">
+            <h2
+              id="event-types-heading"
+              className="text-3xl font-semibold text-dark"
+            >
               Types d&apos;événements
             </h2>
             <p className="mt-4 text-base text-slate-600">

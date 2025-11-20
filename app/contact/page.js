@@ -1,6 +1,21 @@
-export const metadata = {
-  title: "Contact",
-};
+import { generateSeoMetadata } from "@lib/utils/seo";
+
+export async function generateMetadata() {
+  return generateSeoMetadata({
+    title: "Contact",
+    description:
+      "Contactez le RCB95 - Rahilou Cergy Boxe. Retrouvez nos coordonnées, adresses des gymnases à Cergy et Éragny, et notre formulaire de contact pour toutes vos questions.",
+    keywords: [
+      "contact boxe Cergy",
+      "adresse club boxe",
+      "gymnase Cergy",
+      "gymnase Éragny",
+      "coordonnées RCB95",
+      "infos club boxe",
+    ],
+    path: "/contact",
+  });
+}
 
 const ContactPage = () => {
   return (

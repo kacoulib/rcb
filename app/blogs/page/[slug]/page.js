@@ -1,10 +1,24 @@
 import Pagination from "@components/Pagination";
 import config from "@config/config.json";
-import SeoMeta from "@layouts/SeoMeta";
+import { generateSeoMetadata } from "@lib/utils/seo";
 import { getListPage, getSinglePage } from "@lib/contentParser";
 import { markdownify } from "@lib/utils/textConverter";
 import Posts from "@partials/Posts";
 const { blog_folder } = config.settings;
+
+export async function generateMetadata({ params }) {
+  const currentPage = parseInt((params && params.slug) || 1);
+  const postIndex = await getListPage(`content/${blog_folder}/_index.md`);
+  const { frontmatter } = postIndex;
+  const { title, description } = frontmatter;
+
+  return generateSeoMetadata({
+    title: currentPage > 1 ? `${title} - Page ${currentPage}` : title,
+    description: description || `Retrouvez toutes les actualités du RCB95 - Rahilou Cergy Boxe. Page ${currentPage}`,
+    keywords: ["actualités boxe", "blog boxe", "nouvelles RCB95", "articles boxe"],
+    path: currentPage > 1 ? `/blogs/page/${currentPage}` : "/blogs",
+  });
+}
 
 // blog pagination
 const BlogPagination = async ({ params }) => {
@@ -25,20 +39,17 @@ const BlogPagination = async ({ params }) => {
   const { title } = frontmatter;
 
   return (
-    <>
-      <SeoMeta title={title} />
-      <section className="section">
-        <div className="container">
-          {markdownify(title, "h1", "h1 text-center font-normal text-[56px]")}
-          <Posts posts={currentPosts} />
-          <Pagination
-            section={blog_folder}
-            totalPages={totalPages}
-            currentPage={currentPage}
-          />
-        </div>
-      </section>
-    </>
+    <section className="section">
+      <div className="container">
+        {markdownify(title, "h1", "h1 text-center font-normal text-[56px]")}
+        <Posts posts={currentPosts} />
+        <Pagination
+          section={blog_folder}
+          totalPages={totalPages}
+          currentPage={currentPage}
+        />
+      </div>
+    </section>
   );
 };
 

@@ -1,16 +1,12 @@
 import { markdownify } from "@lib/utils/textConverter";
 import MDXContent from "app/helper/MDXContent";
 import Image from "next/image";
-import SeoMeta from "./SeoMeta";
 
 const PostSingle = ({ frontmatter, content }) => {
-  let { description, title, image } = frontmatter;
-  description = description ? description : content.slice(0, 120);
+  let { title, image } = frontmatter;
 
   return (
-    <>
-      <SeoMeta title={title} description={description} />
-      <section className="section">
+    <section className="section">
         <div className="container">
           <div className="row">
             <article className="col-12 mx-auto text-center md:col-8">

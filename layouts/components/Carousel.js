@@ -242,6 +242,8 @@ const Carousel = ({
         modules={[Autoplay, Navigation, Pagination]}
         spaceBetween={0}
         slidesPerView={1}
+        speed={800}
+        effect="slide"
         autoplay={
           carouselImages.length > 1
             ? {
@@ -259,7 +261,10 @@ const Carousel = ({
           setSwiperInstance(swiper);
           // Forcer la mise à jour de la hauteur après l'initialisation
           if (swiper) {
-            swiper.update();
+            setTimeout(() => {
+              swiper.update();
+              swiper.updateSlides();
+            }, 100);
           }
         }}
         onSlideChange={(swiper) => {
