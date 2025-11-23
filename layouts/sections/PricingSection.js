@@ -73,7 +73,7 @@ const pricingPlans = [
       "/pdf/inscriptions/fiche_inscription-cergy-boxe-loisir-25-26.pdf",
   },
   {
-    title: "BEA 14-17 ANS",
+    title: "BEA 13-17 ANS",
     subtitle: "Boxe éducative assaut pour Ados",
     price: "185",
     period: "an",
@@ -85,12 +85,12 @@ const pricingPlans = [
     ],
     highlighted: false,
     borderColor: "border-cyan-400",
-    badges: [{ label: "BEA 14-17", color: "bg-cyan-400 text-white" }],
+    badges: [{ label: "BEA 13-17", color: "bg-cyan-400 text-white" }],
     registrationPdf:
       "/pdf/inscriptions/fiche_inscription-cergy-boxe-BEA-13-17-25-26.pdf",
   },
   {
-    title: "BEA 9-14 ANS",
+    title: "BEA 9-13 ANS",
     subtitle: "Boxe éducative assaut pour Kids",
     price: "175",
     period: "an",

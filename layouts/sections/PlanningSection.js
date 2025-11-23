@@ -38,8 +38,8 @@ const activityInfo = {
       "Remise en forme, technique de base, travail au sac. Ambiance conviviale.",
     color: "bg-red-300",
   },
-  "BEA 14-17 ANS": {
-    title: "BEA 14-17 ANS",
+  "BEA 13-17 ANS": {
+    title: "BEA 13-17 ANS",
     description: "Boxe éducative assaut pour adolescents",
     details:
       "Perfectionnement technique, respect des règles, préparation aux compétitions jeunes.",
@@ -114,9 +114,9 @@ const schedule = [
     time: "18H30-20H30",
     slots: [
       { day: "LUNDI", activity: "BOXE LOISIR", color: "bg-red-300" },
-      { day: "MARDI", activity: "BEA 14-17 ANS", color: "bg-cyan-400" },
+      { day: "MARDI", activity: "BEA 13-17 ANS", color: "bg-cyan-400" },
       { day: "MERCREDI", activity: "BOXE LOISIR", color: "bg-red-300" },
-      { day: "JEUDI", activity: "BEA 14-17 ANS", color: "bg-cyan-400" },
+      { day: "JEUDI", activity: "BEA 13-17 ANS", color: "bg-cyan-400" },
       { day: "VENDREDI", activity: "BOXE LOISIR", color: "bg-red-300" },
       { day: "SAMEDI", activity: "", color: "bg-white" },
       { day: "DIMANCHE", activity: "", color: "bg-white" },
@@ -301,13 +301,13 @@ const PlanningSection = () => {
                 <span className="text-sm font-medium">BEA 9-13 ans</span>
               </button>
               <button
-                onClick={() => handleLegendClick("BEA 14-17 ANS")}
-                onMouseEnter={() => handleLegendHover("BEA 14-17 ANS")}
+                onClick={() => handleLegendClick("BEA 13-17 ANS")}
+                onMouseEnter={() => handleLegendHover("BEA 13-17 ANS")}
                 onMouseLeave={handleLegendLeave}
                 className="flex items-center gap-2 rounded-lg border-2 border-transparent px-3 py-2 transition-all hover:border-primary hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary cursor-pointer"
               >
                 <span className="h-4 w-4 rounded bg-cyan-400"></span>
-                <span className="text-sm font-medium">BEA 14-17 ans</span>
+                <span className="text-sm font-medium">BEA 13-17 ans</span>
               </button>
               <button
                 onClick={() => handleLegendClick("BOXE LOISIR")}
