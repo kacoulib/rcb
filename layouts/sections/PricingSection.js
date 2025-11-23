@@ -199,6 +199,24 @@ const PricingSection = () => {
                     href={plan.registrationPdf}
                     target="_blank"
                     rel="noopener noreferrer"
+                    download
+                    onClick={(e) => {
+                      // Pour iOS, utiliser window.location pour forcer l'ouverture
+                      const isIOS = /iPad|iPhone|iPod/.test(
+                        navigator.userAgent,
+                      );
+                      if (isIOS) {
+                        // Sur iOS, ouvrir directement le PDF
+                        e.preventDefault();
+                        const link = document.createElement("a");
+                        link.href = plan.registrationPdf;
+                        link.target = "_blank";
+                        link.rel = "noopener noreferrer";
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                      }
+                    }}
                     className="flex items-center justify-center gap-2 rounded-lg border-2 border-primary bg-white px-4 py-2.5 text-center text-sm font-semibold text-primary transition hover:bg-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                   >
                     <svg
