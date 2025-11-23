@@ -21,11 +21,12 @@ const pricingPlans = [
       { label: "Muay Thai", color: "bg-blue-600 text-white" },
       { label: "MMA", color: "bg-purple-700 text-white" },
     ],
+    registrationPdf: null, // Package multi-disciplines
   },
   {
     title: "MMA",
     subtitle: "Adulte",
-    price: "280",
+    price: "230",
     period: "an",
     features: [
       "Mixed Martial Arts",
@@ -36,11 +37,12 @@ const pricingPlans = [
     highlighted: false,
     borderColor: "border-purple-700",
     badges: [{ label: "MMA", color: "bg-purple-700 text-white" }],
+    registrationPdf: "/pdf/inscriptions/fiche_inscription-MMA-25-26.pdf",
   },
   {
     title: "MUAY THAI",
     subtitle: "Adulte",
-    price: "240",
+    price: "230",
     period: "an",
     features: [
       "Boxe thaïlandaise",
@@ -51,6 +53,7 @@ const pricingPlans = [
     highlighted: false,
     borderColor: "border-blue-600",
     badges: [{ label: "Muay Thai", color: "bg-blue-600 text-white" }],
+    registrationPdf: "/pdf/inscriptions/fiche_inscription-boxe-tha-25-26.pdf",
   },
   {
     title: "BOXE LOISIR",
@@ -66,6 +69,8 @@ const pricingPlans = [
     highlighted: false,
     borderColor: "border-red-300",
     badges: [{ label: "Boxe Loisir", color: "bg-red-300 text-white" }],
+    registrationPdf:
+      "/pdf/inscriptions/fiche_inscription-cergy-boxe-loisir-25-26.pdf",
   },
   {
     title: "BEA 14-17 ANS",
@@ -81,6 +86,8 @@ const pricingPlans = [
     highlighted: false,
     borderColor: "border-cyan-400",
     badges: [{ label: "BEA 14-17", color: "bg-cyan-400 text-white" }],
+    registrationPdf:
+      "/pdf/inscriptions/fiche_inscription-cergy-boxe-BEA-13-17-25-26.pdf",
   },
   {
     title: "BEA 9-14 ANS",
@@ -96,11 +103,13 @@ const pricingPlans = [
     highlighted: false,
     borderColor: "border-lime-400",
     badges: [{ label: "BEA 9-13", color: "bg-lime-400 text-white" }],
+    registrationPdf:
+      "/pdf/inscriptions/fiche_inscription-cergy-boxe-BEA 9-13-25-26.pdf",
   },
   {
     title: "ONLY GIRLS",
     subtitle: "Adulte",
-    price: "150",
+    price: "100",
     period: "an",
     features: [
       "Cours 100% féminin",
@@ -111,6 +120,7 @@ const pricingPlans = [
     highlighted: false,
     borderColor: "border-pink-500",
     badges: [{ label: "Only Girls", color: "bg-pink-500 text-white" }],
+    registrationPdf: "/pdf/inscriptions/fiche_inscription-only-girls-25-26.pdf",
   },
 ];
 
@@ -183,16 +193,41 @@ const PricingSection = () => {
                   </li>
                 ))}
               </ul>
-              <button
-                onClick={(e) => {
-                  e.preventDefault();
-                  // Utiliser la même fonction que le header
-                  scrollToElement("#contact");
-                }}
-                className="mt-6 w-full rounded-lg bg-primary px-4 py-2.5 text-center text-sm font-semibold text-white transition hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-              >
-                S&apos;INSCRIRE
-              </button>
+              <div className="mt-6 flex flex-col gap-2">
+                {plan.registrationPdf && (
+                  <a
+                    href={plan.registrationPdf}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2 rounded-lg border-2 border-primary bg-white px-4 py-2.5 text-center text-sm font-semibold text-primary transition hover:bg-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                  >
+                    <svg
+                      className="h-4 w-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                      />
+                    </svg>
+                    Télécharger la fiche
+                  </a>
+                )}
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    // Utiliser la même fonction que le header
+                    scrollToElement("#contact");
+                  }}
+                  className="w-full rounded-lg bg-primary px-4 py-2.5 text-center text-sm font-semibold text-white transition hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                >
+                  S&apos;INSCRIRE
+                </button>
+              </div>
             </div>
           ))}
         </div>

@@ -193,6 +193,104 @@ const EnfantClient = () => {
         </div>
       </section>
 
+      {/* Registration Section */}
+      <section className="bg-slate-50 py-16">
+        <div className="container mx-auto max-w-5xl px-4">
+          <div className="mb-12 text-center">
+            <h2 className="text-3xl font-semibold text-dark">
+              Fiches d&apos;inscription
+            </h2>
+            <p className="mt-4 text-base text-slate-600">
+              Téléchargez la fiche d&apos;inscription correspondant à l&apos;âge de votre enfant
+            </p>
+          </div>
+          <div className="grid gap-6 sm:grid-cols-2">
+            <a
+              href="/pdf/inscriptions/fiche_inscription-cergy-boxe-BEA 9-13-25-26.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-4 rounded-lg border-2 border-primary bg-white px-6 py-5 shadow-md transition-all hover:bg-primary hover:text-white hover:shadow-lg"
+            >
+              <svg
+                className="h-10 w-10 text-primary transition-colors group-hover:text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                />
+              </svg>
+              <div className="flex-1">
+                <div className="font-semibold text-dark group-hover:text-white">
+                  BEA 9-13 ans
+                </div>
+                <div className="text-sm text-slate-600 group-hover:text-white/90">
+                  Fiche d&apos;inscription 2025-2026
+                </div>
+              </div>
+              <svg
+                className="h-5 w-5 text-primary transition-colors group-hover:text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                />
+              </svg>
+            </a>
+            <a
+              href="/pdf/inscriptions/fiche_inscription-cergy-boxe-BEA-13-17-25-26.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-4 rounded-lg border-2 border-primary bg-white px-6 py-5 shadow-md transition-all hover:bg-primary hover:text-white hover:shadow-lg"
+            >
+              <svg
+                className="h-10 w-10 text-primary transition-colors group-hover:text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                />
+              </svg>
+              <div className="flex-1">
+                <div className="font-semibold text-dark group-hover:text-white">
+                  BEA 13-17 ans
+                </div>
+                <div className="text-sm text-slate-600 group-hover:text-white/90">
+                  Fiche d&apos;inscription 2025-2026
+                </div>
+              </div>
+              <svg
+                className="h-5 w-5 text-primary transition-colors group-hover:text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="bg-primary py-16 text-white">
         <div className="container mx-auto max-w-4xl px-4 text-center">

@@ -152,8 +152,13 @@ const Carousel = ({
   // Mettre à jour Swiper quand les images changent
   useEffect(() => {
     if (swiperInstance && carouselImages.length > 0) {
-      swiperInstance.update();
-      swiperInstance.updateSlides();
+      try {
+        if (typeof swiperInstance.update === "function") {
+          swiperInstance.update();
+        }
+      } catch (e) {
+        console.warn("Swiper update failed:", e);
+      }
     }
   }, [carouselImages, swiperInstance]);
 
@@ -262,8 +267,13 @@ const Carousel = ({
           // Forcer la mise à jour de la hauteur après l'initialisation
           if (swiper) {
             setTimeout(() => {
-              swiper.update();
-              swiper.updateSlides();
+              try {
+                if (swiper && typeof swiper.update === "function") {
+                  swiper.update();
+                }
+              } catch (e) {
+                console.warn("Swiper update failed:", e);
+              }
             }, 100);
           }
         }}
