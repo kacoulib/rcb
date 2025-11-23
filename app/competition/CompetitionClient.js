@@ -23,7 +23,7 @@ const CompetitionClient = () => {
             <p className="text-xl leading-relaxed">
               La boxe pratiquée aux Jeux Olympiques, réservée à ceux qui
               souhaitent faire de la compétition où la recherche
-              d'efficacité et le KO sont autorisés.
+              d&apos;efficacité et le KO sont autorisés.
             </p>
           </div>
         </div>
@@ -38,13 +38,13 @@ const CompetitionClient = () => {
                 Les acquisitions technique, tactique, physique et psychologique
                 sont essentielles pour engranger des points. Chaque coup porté
                 et réussi est pris en compte. Cette pratique permet notamment
-                d'accéder au Haut Niveau, toutes les composantes de la
+                d&apos;accéder au Haut Niveau, toutes les composantes de la
                 performance sont abordées.
               </p>
 
               <p className="text-lg leading-relaxed">
-                L'entraînement est exigeant et très rigoureux, le passage à
-                la compétition est validé par l'entraîneur qui veille avant
+                L&apos;entraînement est exigeant et très rigoureux, le passage à
+                la compétition est validé par l&apos;entraîneur qui veille avant
                 tout à accompagner le boxeur dans sa formation pour que ce
                 dernier soit capable de veiller à son intégrité physique.
               </p>
@@ -54,9 +54,9 @@ const CompetitionClient = () => {
                   Exigences médicales
                 </h3>
                 <p className="text-base leading-relaxed">
-                  La pratique nécessite le passage d'examens médicaux et
+                  La pratique nécessite le passage d&apos;examens médicaux et
                   ophtalmologique. Après 32 ans, les pratiquants sont soumis à
-                  des examens complémentaires (test d'effort et IRM
+                  des examens complémentaires (test d&apos;effort et IRM
                   cérébral).
                 </p>
               </div>
@@ -208,4 +208,3 @@ const CompetitionClient = () => {
 };
 
 export default CompetitionClient;
-

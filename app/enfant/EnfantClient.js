@@ -22,8 +22,8 @@ const EnfantClient = () => {
             </h1>
             <p className="text-xl leading-relaxed">
               La boxe éducative assaut est une forme de pratique ouverte à
-              toutes et à tous. C'est une pratique sans danger,
-              puisqu'elle exige de ne pas nuire à son adversaire.
+              toutes et à tous. C&apos;est une pratique sans danger,
+              puisqu&apos;elle exige de ne pas nuire à son adversaire.
             </p>
           </div>
         </div>
@@ -36,16 +36,16 @@ const EnfantClient = () => {
             <div className="prose prose-lg max-w-none">
               <p className="text-lg leading-relaxed">
                 La boxe éducative assaut est une forme de pratique ouverte à
-                toutes et à tous. C'est une pratique sans danger,
-                puisqu'elle exige de ne pas nuire à son adversaire par un
+                toutes et à tous. C&apos;est une pratique sans danger,
+                puisqu&apos;elle exige de ne pas nuire à son adversaire par un
                 comportement violent sous peine de sanctions : le boxeur doit
-                toucher et ne pas provoquer de douleur à l'adversaire.
+                toucher et ne pas provoquer de douleur à l&apos;adversaire.
               </p>
 
               <p className="text-lg leading-relaxed">
                 La pratique éducative est ludique et permet à chacun de
                 développer des compétences technico-tactique en toute sécurité
-                (veille de l'intégrité physique et psychologique).
+                (veille de l&apos;intégrité physique et psychologique).
               </p>
 
               <div className="my-8 rounded-lg border-l-4 border-primary bg-primary/5 p-6">
@@ -53,15 +53,15 @@ const EnfantClient = () => {
                   Notre approche pédagogique
                 </h3>
                 <p className="text-base leading-relaxed mb-4">
-                  Au RCB, l'éducation est prioritaire, permettant au plus
+                  Au RCB, l&apos;éducation est prioritaire, permettant au plus
                   jeune de développer leur coordination et leur motricité. À
                   noter que la compétition est secondaire dans notre politique
-                  d'apprentissage et d'enseignement. La formation
-                  étant prioritaire dans la recherche d'évolution en toute
+                  d&apos;apprentissage et d&apos;enseignement. La formation
+                  étant prioritaire dans la recherche d&apos;évolution en toute
                   sécurité.
                 </p>
                 <p className="text-base leading-relaxed">
-                  La compétition et l'évaluation de la progression
+                  La compétition et l&apos;évaluation de la progression
                   technique sont en effet uniquement proposées à partir des
                   Benjamins ayant validé un certain nombre de compétences.
                 </p>
@@ -141,7 +141,7 @@ const EnfantClient = () => {
         <div className="container mx-auto max-w-6xl px-4">
           <div className="mb-12 text-center">
             <h2 className="text-3xl font-semibold text-dark">
-              Par tranches d'âge
+              Par tranches d&apos;âge
             </h2>
             <p className="mt-4 text-base text-slate-600">
               Des cours adaptés à chaque niveau et à chaque âge
