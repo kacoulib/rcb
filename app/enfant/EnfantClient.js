@@ -201,7 +201,8 @@ const EnfantClient = () => {
               Fiches d&apos;inscription
             </h2>
             <p className="mt-4 text-base text-slate-600">
-              Téléchargez la fiche d&apos;inscription correspondant à l&apos;âge de votre enfant
+              Téléchargez la fiche d&apos;inscription correspondant à l&apos;âge
+              de votre enfant
             </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2">
@@ -210,20 +211,6 @@ const EnfantClient = () => {
               target="_blank"
               rel="noopener noreferrer"
               download
-              onClick={(e) => {
-                // Pour iOS, utiliser une approche plus fiable
-                const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-                if (isIOS) {
-                  e.preventDefault();
-                  const link = document.createElement('a');
-                  link.href = "/pdf/inscriptions/fiche_inscription-cergy-boxe-BEA 9-13-25-26.pdf";
-                  link.target = '_blank';
-                  link.rel = 'noopener noreferrer';
-                  document.body.appendChild(link);
-                  link.click();
-                  document.body.removeChild(link);
-                }
-              }}
               className="group flex items-center gap-4 rounded-lg border-2 border-primary bg-white px-6 py-5 shadow-md transition-all hover:bg-primary hover:text-white hover:shadow-lg"
             >
               <svg
@@ -266,20 +253,6 @@ const EnfantClient = () => {
               target="_blank"
               rel="noopener noreferrer"
               download
-              onClick={(e) => {
-                // Pour iOS, utiliser une approche plus fiable
-                const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-                if (isIOS) {
-                  e.preventDefault();
-                  const link = document.createElement('a');
-                  link.href = "/pdf/inscriptions/fiche_inscription-cergy-boxe-BEA-13-17-25-26.pdf";
-                  link.target = '_blank';
-                  link.rel = 'noopener noreferrer';
-                  document.body.appendChild(link);
-                  link.click();
-                  document.body.removeChild(link);
-                }
-              }}
               className="group flex items-center gap-4 rounded-lg border-2 border-primary bg-white px-6 py-5 shadow-md transition-all hover:bg-primary hover:text-white hover:shadow-lg"
             >
               <svg
@@ -343,4 +316,3 @@ const EnfantClient = () => {
 };
 
 export default EnfantClient;
-
