@@ -21,7 +21,7 @@ const pricingPlans = [
       { label: "Muay Thai", color: "bg-blue-600 text-white" },
       { label: "MMA", color: "bg-purple-700 text-white" },
     ],
-    registrationPdf: null, // Package multi-disciplines
+    registrationPdf: "/pdf/inscriptions/fiche_inscription-cergy-multi-boxe.pdf",
   },
   {
     title: "MMA",
