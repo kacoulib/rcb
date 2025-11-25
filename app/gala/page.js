@@ -60,7 +60,7 @@ const GalaPage = () => {
       {/* Hero Section avec carousel gala */}
       <section className="relative h-[calc(100vh-100px)] overflow-hidden pt-20 md:pt-24">
         <Carousel
-          tags={["gala", "cup", "trophy"]}
+          tags={["gala", "cup", "trophy", "event"]}
           limit={8}
           className="absolute inset-0 z-0"
           showControls={true}

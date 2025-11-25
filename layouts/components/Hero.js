@@ -33,7 +33,7 @@ const Hero = () => {
     <section className="relative h-[calc(100vh-100px)] overflow-hidden pt-20 md:pt-24">
       {/* Carousel avec tag "hero" pour la page d'accueil */}
       <Carousel
-        tags={["hero", "carousel", "competition"]}
+        tags={["hero", "carousel", "competition", "event"]}
         limit={10}
         defaultImages={defaultImages}
         className="absolute inset-0 z-0"
